@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}NewsFeed!{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/article/assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/article/assets/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/article/assets/css/animate.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/article/assets/css/font.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/article/assets/css/li-scroller.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/article/assets/css/slick.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/article/assets/css/jquery.fancybox.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/article/assets/css/theme.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/article/assets/css/style.css') }}">
+    {% endblock %}
+    <!--[if lt IE 9]>
+    {% block javascriptshead %}
+    <script src="{{ asset('bundles/article/assets/js/html5shiv.min.js') }}"></script>
+    <script src="{{ asset('bundles/article/assets/js/respond.min.js') }}"></script>
+    {% endblock %}
+    <![endif]-->
+</head>
+<body>
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>

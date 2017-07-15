@@ -1,0 +1,11 @@
+frontend_news:
+    resource: "@FrontendBundle/Resources/config/routing/news.yml"
+    prefix:   /news
+
+frontend_homepage:
+    path:     /
+    defaults: { _controller: FrontendBundle:Default:index }
+
+frontend_team:
+    resource: "@FrontendBundle/Resources/config/routing/team.yml"
+    prefix:   /team

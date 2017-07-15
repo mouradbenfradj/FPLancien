@@ -1,0 +1,259 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+    <div class="container">
+        <header id="header">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="header_top">
+                        <div class="header_top_left">
+                            {{ knp_menu_render('FrontendBundle:Builder:mainMenu') }}
+                        </div>
+                        <div class="header_top_right">
+                            <p>Friday, December 05, 2045</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="header_bottom">
+
+                        <div><a href="#"><img src="{{ asset('bundles/article/images/cover.jpg') }}" alt="" height="420"
+                                              width="1080"></a></div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section id="navArea">
+            <nav class="navbar navbar-inverse" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                            aria-expanded="false" aria-controls="navbar"><span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav main_nav">
+                        <li class="active"><a href="{{ path('article_homepage') }}"><span
+                                        class="fa fa-home desktop-home"></span><span class="mobile-show">Home</span></a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false">FPL Updates & Tips Exclusive </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ path('article_homepage',{'categorie':1}) }}">Captain Choice</a></li>
+                                <li><a href="{{ path('article_homepage',{'categorie':2}) }}">TOP 4 Players To Watch</a>
+                                </li>
+                                <li><a href="{{ path('article_homepage',{'categorie':3}) }}">TOP 3 Differentials</a>
+                                </li>
+                                <li><a href="{{ path('article_homepage',{'categorie':4}) }}">Gamewwek Top Facts &
+                                        Stats</a></li>
+                                <li><a href="#">FPL Top Players</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="{{ path('article_homepage',{'categorie':5}) }}">Price Changes</a></li>
+                        <li><a href="{{ path('article_homepage',{'categorie':6}) }}">Injury Updates</a></li>
+                        <li><a href="{{ path('article_homepage',{'categorie':7}) }}">FPL Clean Sheets</a></li>
+                        <li><a href="{{ path('article_homepage',{'categorie':8}) }}">EPL Teams Current Lineups</a></li>
+                        <li><a href="{{ path('article_homepage',{'categorie':9}) }}">Others</a></li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                                aria-expanded="false">Join Our Leagues </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="https://goo.gl/KTBFt8">Join Our Private League</a></li>
+                                <li><a href="https://goo.gl/URVqv9">Join Our Head to Head League</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+        </section>
+        <section id="newsSection">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="latest_newsarea"><span>FPL Latest News</span>
+                        <ul id="ticker01" class="news_sticker">
+                            {% for new in news %}
+                                <li>
+                                    <a href="#"> <img src="{{ asset('bundles/article/images/news_thumbnail2.png') }}"
+                                                      alt="">
+                                        {{ new.latestNews }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <div class="social_area">
+                            <ul class="social_nav">
+                                <li class="facebook"><a href="https://www.facebook.com/FPL.Updates.Tips/"></a></li>
+                                <li class="twitter"><a href="https://twitter.com/FPLUpdates_Tips"></a></li>
+                                <li class="flickr"><a href="#"></a></li>
+                                <li class="pinterest"><a href="#"></a></li>
+                                <li class="googleplus"><a href="#"></a></li>
+                                <li class="vimeo"><a href="#"></a></li>
+                                <li class="youtube"><a href="#"></a></li>
+                                <li class="mail"><a href="#"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contentSection">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="left_content">
+                        <div class="single_page">
+                            <ol class="breadcrumb">
+                                <li><a href="{{ path('frontend_homepage') }}">Home</a></li>
+                                <li><a href="#">{% if article.categorie == 1 %}
+                                            Captain Choice
+                                        {% elseif article.categorie == 2 %}
+                                            TOP 4 Players To Watch
+                                        {% elseif article.categorie == 3 %}
+                                            TOP 3 Differentials
+                                        {% elseif article.categorie == 4 %}
+                                            Gamewwek Top Facts & Stats
+                                        {% elseif article.categorie == 5 %}
+                                            Price Changes
+                                        {% elseif article.categorie == 6 %}
+                                            Injury Update
+                                        {% elseif article.categorie == 7 %}
+                                            FPL Clean Sheets
+                                        {% elseif article.categorie == 8 %}
+                                            EPL Teams Current Lineups
+                                        {% elseif article.categorie == 9 %}
+                                            Others
+                                        {% elseif article.categorie == 10 %}
+                                            FPL Top Players
+                                        {% endif %}</a></li>
+
+                            </ol>
+                            <h1>{{ article.titre }}</h1>
+                            <div class="post_commentbox"><a href="#"><i class="fa fa-user"></i>{{ article.utilisateur }}
+                                </a> <span><i
+                                            class="fa fa-calendar"></i>{{ article.dateCreation|date('Y-m-d') }}</span>
+                                <a href="#"><i
+                                            class="fa fa-tags"></i>
+                                    {% if article.categorie == 1 %}
+                                        Captain Choice
+                                    {% elseif article.categorie == 2 %}
+                                        TOP 4 Players To Watch
+                                    {% elseif article.categorie == 3 %}
+                                        TOP 3 Differentials
+                                    {% elseif article.categorie == 4 %}
+                                        Gamewwek Top Facts & Stats
+                                    {% elseif article.categorie == 5 %}
+                                        Price Changes
+                                    {% elseif article.categorie == 6 %}
+                                        Injury Update
+                                    {% elseif article.categorie == 7 %}
+                                        FPL Clean Sheets
+                                    {% elseif article.categorie == 8 %}
+                                        EPL Teams Current Lineups
+                                    {% elseif article.categorie == 9 %}
+                                        Others
+                                    {% elseif article.categorie == 10 %}
+                                        FPL Top Players
+                                    {% endif %}
+                                </a></div>
+                            <div class="single_page_content"><img class="img-center"
+                                                                  src="{{ vich_uploader_asset(article, 'imageFile') }}"
+                                                                  alt="">
+                                <blockquote>
+                                    {{ article.description }}
+                                </blockquote>
+
+                            </div>
+                            <div><textarea wi></textarea></div>
+                            <div class="related_post">
+                                <h2>Related Post <i class="fa fa-thumbs-o-up"></i></h2>
+                                <ul class="spost_nav wow fadeInDown animated">
+                                    {% for articl in articles %}
+                                        {% if loop.index <= 3 %}
+                                            <li>
+                                                <div class="media"><a class="media-left"
+                                                                      href="{{ path('article_show',{'id': articl.id }) }}">
+                                                        <img
+                                                                src="{{ vich_uploader_asset(articl, 'imageFile') }}"
+                                                                alt=""> </a>
+                                                    <div class="media-body"><a class="catg_title"
+                                                                               href="{{ path('article_show',{'id': articl.id }) }}">
+                                                            {{ articl.titre }}</a></div>
+                                                </div>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav class="nav-slit"><a class="prev" href="#"> <span class="icon-wrap"><i class="fa fa-angle-left"></i></span>
+                        <div>
+                            <h3>City Lights</h3>
+                            <img src="../images/post_img1.jpg" alt=""/></div>
+                    </a> <a class="next" href="#"> <span class="icon-wrap"><i class="fa fa-angle-right"></i></span>
+                        <div>
+                            <h3>Street Hills</h3>
+                            <img src="../images/post_img1.jpg" alt=""/></div>
+                    </a></nav>
+            </div>
+        </section>
+        <footer id="footer">
+            <div class="footer_top">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="footer_widget wow fadeInLeftBig">
+                            <h2>Flickr Images</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="footer_widget wow fadeInDown">
+                            <h2>Tag</h2>
+                            <ul class="tag_nav">
+                                <li><a href="#">Games</a></li>
+                                <li><a href="#">Sports</a></li>
+                                <li><a href="#">Fashion</a></li>
+                                <li><a href="#">Business</a></li>
+                                <li><a href="#">Life &amp; Style</a></li>
+                                <li><a href="#">Technology</a></li>
+                                <li><a href="#">Photo</a></li>
+                                <li><a href="#">Slider</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="footer_widget wow fadeInRightBig">
+                            <h2>Contact</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur
+                                adipisicing elit.</p>
+                            <address>
+                                Perfect News,1238 S . 123 St.Suite 25 Town City 3333,USA Phone: 123-326-789 Fax:
+                                123-546-567
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer_bottom">
+                <p class="copyright">Copyright &copy; 2045 <a href="index.html">NewsFeed</a></p>
+                <p class="developer">Developed By Wpfreeware</p>
+            </div>
+
+        </footer>
+    </div>
+{% endblock %}
+    {% block javascripts %}
+        <script src="{{ asset('bundles/article/assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('bundles/article/assets/js/wow.min.js') }}"></script>
+        <script src="{{ asset('bundles/article/assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('bundles/article/assets/js/slick.min.js') }}"></script>
+        <script src="{{ asset('bundles/article/assets/js/jquery.li-scroller.1.0.js') }}"></script>
+        <script src="{{ asset('bundles/article/assets/js/jquery.newsTicker.min.js') }}"></script>
+        <script src="{{ asset('bundles/article/assets/js/jquery.fancybox.pack.js') }}"></script>
+        <script src="{{ asset('bundles/article/assets/js/custom.js') }}"></script>
+    {% endblock %}
