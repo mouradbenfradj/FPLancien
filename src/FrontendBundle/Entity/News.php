@@ -63,4 +63,3 @@ class News
         return $this->latestNews;
     }
 }
-
