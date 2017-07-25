@@ -167,12 +167,6 @@
                                 </blockquote>
 
                             </div>
-                            <div>
-                                {% stylesheets '@FOSCommentBundle/Resources/public/css/comments.css' %}
-                                <link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
-                                {% endstylesheets %}
-                                {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': article.id } %}
-                            </div>
                             <div class="related_post">
                                 <h2>Related Post <i class="fa fa-thumbs-o-up"></i></h2>
                                 <ul class="spost_nav wow fadeInDown animated">

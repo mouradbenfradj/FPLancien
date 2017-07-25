@@ -29,7 +29,7 @@ class Comment extends BaseComment implements SignedCommentInterface
      * Thread of this comment
      *
      * @var Thread
-     * @ORM\ManyToOne(targetEntity="ArticleBundle\Entity\Article")
+     * @ORM\ManyToOne(targetEntity="FrontendBundle\Entity\Thread")
      */
     protected $thread;
     /**

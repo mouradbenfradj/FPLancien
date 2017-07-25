@@ -5,7 +5,6 @@ namespace ArticleBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use FOS\CommentBundle\Entity\Thread as BaseThread;
 
 /**
  * Article
@@ -13,9 +12,8 @@ use FOS\CommentBundle\Entity\Thread as BaseThread;
  * @ORM\Table(name="article")
  * @ORM\Entity(repositoryClass="ArticleBundle\Repository\ArticleRepository")
  * @Vich\Uploadable
- * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  */
-class Article extends BaseThread
+class Article
 {
     /**
      * @var int

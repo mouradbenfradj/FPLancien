@@ -132,7 +132,7 @@ fos_comment:
     class:
         model:
             comment: FrontendBundle\Entity\Comment
-            thread: ArticleBundle\Entity\Article
+            thread: FrontendBundle\Entity\Thread
 assetic:
     bundles: [ "FOSCommentBundle" ]
     debug:          '%kernel.debug%'
