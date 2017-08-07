@@ -13,7 +13,10 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $news = $em->getRepository('FrontendBundle:News')->findAll();
         $articles = $em->getRepository('ArticleBundle:Article')->findAll();
+        $articles = array_reverse($articles);
+        $news = array_reverse($news);
         $teams = $em->getRepository('FrontendBundle:Team')->findAll();
+        $teams = array_reverse($teams);
         if ($request->get('categorie')) {
             return $this->render('ArticleBundle:Default:articleByCategorie.html.twig', array('news' => $news, 'articles' => $articles));
         }

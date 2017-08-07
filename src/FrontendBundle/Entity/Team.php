@@ -10,6 +10,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;/**
  * @ORM\Table(name="team")
  * @ORM\Entity(repositoryClass="FrontendBundle\Repository\TeamRepository")
  * @Vich\Uploadable
+ * @ORM\HasLifecycleCallbacks()
  */
 class Team
 {
@@ -77,6 +78,14 @@ class Team
         }
 
         return $this;
+    }
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        $this->dateCreation = new \DateTime();
+
     }
 
     /**

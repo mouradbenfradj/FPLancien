@@ -3,7 +3,6 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@ArticleBundle/Resources/config/services.yml" }
-    - { resource: "@UserBundle/Resources/config/services.yml" }
     - { resource: "@FrontendBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -15,7 +14,7 @@ parameters:
 
 framework:
     #esi: ~
-    translator: ~
+    translator: { fallbacks: [fr] }
     secret: '%secret%'
     router:
         resource: '%kernel.root_dir%/config/routing.yml'
@@ -37,6 +36,8 @@ framework:
 
 # Twig Configuration
 twig:
+    form_themes:
+        - ::admin/image.html.twig
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
 
@@ -50,17 +51,21 @@ doctrine:
         user: '%database_user%'
         password: '%database_password%'
         charset: UTF8
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: '%kernel.root_dir%/data/data.db3'
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #path: '%database_path%'
+        types:
+            json: Sonata\Doctrine\Types\JsonType
 
     orm:
-        auto_generate_proxy_classes: '%kernel.debug%'
-        naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+        auto_generate_proxy_classes: "%kernel.debug%"
+        entity_managers:
+            default:
+                naming_strategy: doctrine.orm.naming_strategy.underscore
+                auto_mapping: true
+                mappings:
+                    ApplicationSonataUserBundle: ~
+                    SonataUserBundle: ~
+                    FOSUserBundle: ~
+                    ApplicationSonataMediaBundle: ~
+                    SonataMediaBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -73,7 +78,15 @@ swiftmailer:
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: UserBundle\Entity\User
+    user_class:     Application\Sonata\UserBundle\Entity\User
+
+    group:
+        group_class:   Application\Sonata\UserBundle\Entity\Group
+        group_manager: sonata.user.orm.group_manager                    # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
+
+    service:
+        user_manager: sonata.user.orm.user_manager  
+
 
 knp_menu:
     # use "twig: false" to disable the Twig extension and the TwigRenderer
@@ -101,41 +114,52 @@ vich_uploader:
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
-fos_comment:
-    acl: true
-    service:
-        acl:
-            thread:  fos_comment.acl.thread.roles
-            comment: fos_comment.acl.comment.roles
-            vote:    fos_comment.acl.vote.roles
-        manager:
-            thread:  fos_comment.manager.thread.acl
-            comment: fos_comment.manager.comment.acl
-            vote:    fos_comment.manager.vote.acl
-    acl_roles:
-        comment:
-            create: IS_AUTHENTICATED_ANONYMOUSLY
-            view: IS_AUTHENTICATED_ANONYMOUSLY
-            edit: ROLE_ADMIN
-            delete: ROLE_ADMIN
-        thread:
-            create: IS_AUTHENTICATED_ANONYMOUSLY
-            view: IS_AUTHENTICATED_ANONYMOUSLY
-            edit: ROLE_ADMIN
-            delete: ROLE_ADMIN
-        vote:
-            create: IS_AUTHENTICATED_ANONYMOUSLY
-            view: IS_AUTHENTICATED_ANONYMOUSLY
-            edit: ROLE_ADMIN
-            delete: ROLE_ADMIN
-    db_driver: orm
-    class:
-        model:
-            comment: FrontendBundle\Entity\Comment
-            thread: FrontendBundle\Entity\Thread
 assetic:
-    bundles: [ "FOSCommentBundle" ]
     debug:          '%kernel.debug%'
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+
+        sonata.user.block.menu:    # used to display the menu in profile pages
+        sonata.user.block.account: # used to display menu option (login option)
+        sonata.block.service.text: # used to if you plan to use Sonata user routes
+
+sonata_user:
+    security_acl: true
+    manager_type: orm # can be orm or mongodb
+
+sonata_media:
+    # if you don't use default namespace configuration
+    #class:
+    #    media: MyVendor\MediaBundle\Entity\Media
+    #    gallery: MyVendor\MediaBundle\Entity\Gallery
+    #    gallery_has_media: MyVendor\MediaBundle\Entity\GalleryHasMedia
+    db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr it is mandatory to choose one here
+    default_context: default # you need to set a context
+    contexts:
+        default:  # the default context is mandatory
+            providers:
+                - sonata.media.provider.dailymotion
+                - sonata.media.provider.youtube
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+                - sonata.media.provider.vimeo
+
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
+
+    cdn:
+        server:
+            path: /uploads/media # http://media.sonata-project.org/
+
+    filesystem:
+        local:
+            directory:  "%kernel.root_dir%/../web/uploads/media"
+            create:     false

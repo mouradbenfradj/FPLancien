@@ -12,15 +12,16 @@
                         <div class="header_top_left">
                             {{ knp_menu_render('FrontendBundle:Builder:mainMenu') }}
                         </div>
-                        <div class="header_top_right">
-                            <p>Friday, December 05, 2045</p>
-                        </div>
+                        {% block login %}
+                            {{ parent() }}
+                        {% endblock %}
                     </div>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="header_bottom">
 
-                        <div><a href="#"><img src="{{ asset('bundles/article/images/cover.jpg') }}" alt="" height="420"
+                        <div><a href="#">
+                                <img src="{{ asset('bundles/article/newlogos/generals.jpg') }}" alt="" height="420"
                                               width="1080"></a></div>
                     </div>
                 </div>
@@ -41,18 +42,21 @@
                         </li>
 
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-expanded="false">FPL Updates & Tips Exclusive </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ path('article_homepage',{'categorie':1}) }}">Captain Choice</a></li>
-                                <li><a href="{{ path('article_homepage',{'categorie':2}) }}">TOP 4 Players To Watch</a>
-                                </li>
-                                <li><a href="{{ path('article_homepage',{'categorie':3}) }}">TOP 3 Differentials</a>
-                                </li>
-                                <li><a href="{{ path('article_homepage',{'categorie':4}) }}">Gamewwek Top Facts &
-                                        Stats</a></li>
-                                <li><a href="#">FPL Top Players</a></li>
-                            </ul>
+                            {% block dropmenu %}
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-expanded="false">FPL Updates & Tips Exclusive </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{ path('article_homepage',{'categorie':1}) }}">Captain Choice</a></li>
+                                    <li><a href="{{ path('article_homepage',{'categorie':2}) }}">TOP 4 Players To
+                                            Watch</a>
+                                    </li>
+                                    <li><a href="{{ path('article_homepage',{'categorie':3}) }}">TOP 3 Differentials</a>
+                                    </li>
+                                    <li><a href="{{ path('article_homepage',{'categorie':4}) }}">Gamewwek Top Facts &
+                                            Stats</a></li>
+                                    <li><a href="{{ path('article_homepage',{'categorie':10}) }}">FPL Top Players</a>
+                                    </li>
+                                </ul>                            {% endblock %}
                         </li>
 
                         <li><a href="{{ path('article_homepage',{'categorie':5}) }}">Price Changes</a></li>
@@ -77,26 +81,13 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="latest_newsarea"><span>FPL Latest News</span>
                         <ul id="ticker01" class="news_sticker">
-                            {% for new in news %}
-                                <li>
-                                    <a href="#"> <img src="{{ asset('bundles/article/images/news_thumbnail2.png') }}"
-                                                      alt="">
-                                        {{ new.latestNews }}</a>
-                                </li>
-                            {% endfor %}
+                            {% block news %}
+                                {{ parent() }}
+                            {% endblock %}
                         </ul>
-                        <div class="social_area">
-                            <ul class="social_nav">
-                                <li class="facebook"><a href="https://www.facebook.com/FPL.Updates.Tips/"></a></li>
-                                <li class="twitter"><a href="https://twitter.com/FPLUpdates_Tips"></a></li>
-                                <li class="flickr"><a href="#"></a></li>
-                                <li class="pinterest"><a href="#"></a></li>
-                                <li class="googleplus"><a href="#"></a></li>
-                                <li class="vimeo"><a href="#"></a></li>
-                                <li class="youtube"><a href="#"></a></li>
-                                <li class="mail"><a href="#"></a></li>
-                            </ul>
-                        </div>
+                        {% block link %}
+                            {{ parent() }}
+                        {% endblock %}
                     </div>
                 </div>
             </div>
@@ -108,7 +99,8 @@
                         <div class="single_page">
                             <ol class="breadcrumb">
                                 <li><a href="{{ path('frontend_homepage') }}">Home</a></li>
-                                <li><a href="#">{% if article.categorie == 1 %}
+                                <li><a href="#">
+                                        {% if article.categorie == 1 %}
                                             Captain Choice
                                         {% elseif article.categorie == 2 %}
                                             TOP 4 Players To Watch
@@ -163,7 +155,7 @@
                                                                   src="{{ vich_uploader_asset(article, 'imageFile') }}"
                                                                   alt="">
                                 <blockquote>
-                                    {{ article.description }}
+                                    {{ article.description | nl2br }}
                                 </blockquote>
 
                             </div>
@@ -201,49 +193,10 @@
                     </a></nav>
             </div>
         </section>
-        <footer id="footer">
-            <div class="footer_top">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                        <div class="footer_widget wow fadeInLeftBig">
-                            <h2>Flickr Images</h2>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                        <div class="footer_widget wow fadeInDown">
-                            <h2>Tag</h2>
-                            <ul class="tag_nav">
-                                <li><a href="#">Games</a></li>
-                                <li><a href="#">Sports</a></li>
-                                <li><a href="#">Fashion</a></li>
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">Life &amp; Style</a></li>
-                                <li><a href="#">Technology</a></li>
-                                <li><a href="#">Photo</a></li>
-                                <li><a href="#">Slider</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                        <div class="footer_widget wow fadeInRightBig">
-                            <h2>Contact</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit.</p>
-                            <address>
-                                Perfect News,1238 S . 123 St.Suite 25 Town City 3333,USA Phone: 123-326-789 Fax:
-                                123-546-567
-                            </address>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer_bottom">
-                <p class="copyright">Copyright &copy; 2045 <a href="index.html">NewsFeed</a></p>
-                <p class="developer">Developed By Wpfreeware</p>
-            </div>
+        {% block footer %}
+            {{ parent() }}
+        {% endblock %}
 
-        </footer>
     </div>
 {% endblock %}
     {% block javascripts %}

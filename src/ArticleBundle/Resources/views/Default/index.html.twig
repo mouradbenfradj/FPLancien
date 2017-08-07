@@ -18,24 +18,16 @@
                              #}
                             {{ knp_menu_render('FrontendBundle:Builder:mainMenu') }}
                         </div>
-                        <div class="header_top_right">
-                            <p>  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                    {{ 'Logged In As'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                                    <a style="color: white;" href="{{ path('fos_user_security_logout') }}">
-                                        {{ 'logout'|trans({}, 'FOSUserBundle') }}
-                                    </a>
-                                {% else %}
-                                    <a style="color: white;"
-                                       href="{{ path('fos_user_security_login') }}">{{ 'login'|trans({}, 'FOSUserBundle') }}</a>
-                                {% endif %}
-                            </p>
-                        </div>
+                        {% block login %}
+                            {{ parent() }}
+                        {% endblock %}
                     </div>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="header_bottom">
 
-                        <div><a href="#"><img src="{{ asset('bundles/article/images/cover.jpg') }}" alt="" height="420"
+                        <div><a href="#">
+                                <img src="{{ asset('bundles/article/newlogos/generals.jpg') }}" alt="" height="420"
                                               width="1080"></a></div>
                     </div>
                 </div>
@@ -56,18 +48,9 @@
                         </li>
 
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-expanded="false">FPL Updates & Tips Exclusive </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ path('article_homepage',{'categorie':1}) }}">Captain Choice</a></li>
-                                <li><a href="{{ path('article_homepage',{'categorie':2}) }}">TOP 4 Players To Watch</a>
-                                </li>
-                                <li><a href="{{ path('article_homepage',{'categorie':3}) }}">TOP 3 Differentials</a>
-                                </li>
-                                <li><a href="{{ path('article_homepage',{'categorie':4}) }}">Gamewwek Top Facts &
-                                        Stats</a></li>
-                                <li><a href="#">FPL Top Players</a></li>
-                            </ul>
+                            {% block dropmenu %}
+                                {{ parent() }}
+                            {% endblock %}
                         </li>
 
                         <li><a href="{{ path('article_homepage',{'categorie':5}) }}">Price Changes</a></li>
@@ -92,26 +75,13 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="latest_newsarea"><span>FPL Latest News</span>
                         <ul id="ticker01" class="news_sticker">
-                            {% for new in news %}
-                                <li>
-                                    <a href="#"> <img src="{{ asset('bundles/article/images/news_thumbnail2.png') }}"
-                                                      alt="">
-                                        {{ new.latestNews }}</a>
-                                </li>
-                            {% endfor %}
+                            {% block news %}
+                                {{ parent() }}
+                            {% endblock %}
                         </ul>
-                        <div class="social_area">
-                            <ul class="social_nav">
-                                <li class="facebook"><a href="https://www.facebook.com/FPL.Updates.Tips/"></a></li>
-                                <li class="twitter"><a href="https://twitter.com/FPLUpdates_Tips"></a></li>
-                                <li class="flickr"><a href="#"></a></li>
-                                <li class="pinterest"><a href="#"></a></li>
-                                <li class="googleplus"><a href="#"></a></li>
-                                <li class="vimeo"><a href="#"></a></li>
-                                <li class="youtube"><a href="#"></a></li>
-                                <li class="mail"><a href="#"></a></li>
-                            </ul>
-                        </div>
+                        {% block link %}
+                            {{ parent() }}
+                        {% endblock %}
                     </div>
                 </div>
             </div>
@@ -120,68 +90,34 @@
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-8">
                     <div class="slick_slider">
-                        {% for article in articles %}
+                        {% set index = 1 %}
+                        {% for article in articles  if index <= 6 and article.categorie != '10' %}
                             <div class="single_iteam"><a href="#">
-                                    <a href="{{ path('article_show',{'id': article.id }) }}"> <img
+                                    <a ... href="{{ path('article_show',{'id': article.id }) }}"> <img
                                                 src="{{ vich_uploader_asset(article, 'imageFile') }}" alt=""></a>
                                     <div class="slider_article">
                                         <h2><a class="slider_tittle" href="#">{{ article.titre }}</a>
                                         </h2>
-                                        <p>{{ article.description }}</p>
+                                        <p>
+                                            {{ article.description | striptags | slice(0, 200) }} ...
+                                        </p>
                                     </div>
                                 </a>
                             </div>
-
+                            {% set index = index + 1 %}
                         {% endfor %}
-                        <div class="single_iteam"><a href="#"> <img
-                                        src="{{ asset('bundles/article/images/slider_img4.jpg') }}" alt=""></a>
-                            <div class="slider_article">
-                                <h2><a class="slider_tittle" href="#">Gameweek 29, @FPLUpdates_Tips Captain Choice :</a>
-                                </h2>
-                                <p>1st Choice : Romelu Lukaku vs HUL H , 2nd Choice : Alexis Sanchez vs WBA A, 3rd
-                                    Choice : Son vs SOU H...</p>
-                            </div>
-                        </div>
 
-                        <div class="single_iteam"><a href="#"> <img
-                                        src="{{ asset('bundles/article/images/slider_img2.jpg') }}" alt=""></a>
-                            <div class="slider_article">
-                                <h2><a class="slider_tittle" href="#">Looking for some good differentials for GW29 ?
-                                        Here you are !!!</a></h2>
-                                <p>MID -- #King | £5.6m | 8.3% ownership, The top FPL scorer [18pts] of the last game
-                                    week can't be ignored in our differential picks this time out again. Despite
-                                    netti...</p>
-                            </div>
-                        </div>
-
-                        <div class="single_iteam"><a href="#"> <img
-                                        src="{{ asset('bundles/article/images/slider_img3.jpg') }}" alt=""></a>
-                            <div class="slider_article">
-                                <h2><a class="slider_tittle" href="#">Players to Watch GW29</a></h2>
-                                <p>League’s meanest defense, Spurs, have managed 4 clean sheets in their last 5 home
-                                    games. He might even nick some bonus from saves as in form ...</p>
-                            </div>
-                        </div>
-
-                        <div class="single_iteam"><a href="#"> <img
-                                        src="{{ asset('bundles/article/images/slider_img1.jpg') }}" alt=""></a>
-                            <div class="slider_article">
-                                <h2><a class="slider_tittle" href="#">Comparing Tottenham Top Players During Kane's
-                                        Absent!</a></h2>
-                                <p>Comparing Tottenham Top Players During Kane's Absent!Comparing Tottenham Top Players
-                                    During Kane's Absent!Comparing Tottenham Top Players During Kane's Absent!...</p>
-                            </div>
-                        </div>
 
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
                     <div class="latest_post">
-                        <h2><span>Latest Articles</span></h2>
+                        <h2><span>FPL TOP PLAYERS</span></h2>
                         <div class="latest_post_container">
                             <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
                             <ul class="latest_postnav">
-                                {% for article in articles if article.categorie == '10' %}
+                                {% set index = 1 %}
+                                {% for article in articles if article.categorie == '10' and index <= 5 %}
                                     <li>
                                         <div class="media"><a href="{{ path('article_show',{'id': article.id }) }}"
                                                               class="media-left"> <img alt=""
@@ -192,6 +128,8 @@
                                             </div>
                                         </div>
                                     </li>
+                                    {% set index = index + 1 %}
+
                                 {% endfor %}
                                 {#
                                                                 <li>
@@ -235,19 +173,13 @@
         <div class="single_post_content">
             <h2><span>Fantasy Articles</span></h2>
             <ul class="photograph_nav  wow fadeInDown">
-                {% set index = 0 %}
-                {% for article in articles if index <= 6 %}
-                        <li>
-                            <div class="single_iteam"><a href="{{ path('article_show',{'id': article.id }) }}"> <img
-                                            src="{{ vich_uploader_asset(article, 'imageFile') }}"
-                                            alt=""></a>
-                                <div class="slider_article">
-                                    <h2><a class="slider_tittle" href="#">{{ article.titre }} </a></h2>
-                                    <p>{{ article.description }} </p>
-                                </div>
-                            </div>
-                        </li>
+                {% set index = 1 %}
+                {% for article in articles if index <= 6 and article.categorie != '10' %}
+                    {% block fantasyarticles %}
+                        {{ parent() }}
+                    {% endblock %}
                     {% set index = index + 1 %}
+
                 {% endfor %}
 
                 {#<li>
@@ -312,117 +244,27 @@
         <div class="single_post_content">
             <h2><span>Teams Suggested By FPL Updates & Tips</span></h2>
             <ul class="photograph_nav  wow fadeInDown">
-                {% for team in teams %}
+                {% set index = 1 %}
+                {% for team in teams  if index <= 6 %}
                     <li>
                         <div class="photo_grid">
                             <figure class="effect-layla">
                                 <a class="fancybox-buttons" data-fancybox-group="button"
-                                   href="{{ vich_uploader_asset(team, 'imageFile') }}" title="Team 1"> <img
+                                   href="{{ vich_uploader_asset(team, 'imageFile') }}" title="{{ team.titre }}"> <img
                                             src="{{ vich_uploader_asset(team, 'imageFile') }}" alt=""/></a>
                             </figure>
                         </div>
                     </li>
+                    {% set index = index+ 1 %}
+
                 {% endfor %}
-                <li>
-                    <div class="photo_grid">
-                        <figure class="effect-layla">
-                            <a class="fancybox-buttons" data-fancybox-group="button"
-                               href="{{ asset('bundles/article/images/photograph_img2.jpg') }}" title="Team 1"> <img
-                                        src="{{ asset('bundles/article/images/photograph_img2.jpg') }}" alt=""/></a>
-                        </figure>
-                    </div>
-                </li>
-                <li>
-                    <div class="photo_grid">
-                        <figure class="effect-layla"><a class="fancybox-buttons" data-fancybox-group="button"
-                                                        href="{{ asset('bundles/article/images/photograph_img3.jpg') }}"
-                                                        title="Team 2"> <img
-                                        src="{{ asset('bundles/article/images/photograph_img3.jpg') }}" alt=""/> </a>
-                        </figure>
-                    </div>
-                </li>
-                <li>
-                    <div class="photo_grid">
-                        <figure class="effect-layla"><a class="fancybox-buttons" data-fancybox-group="button"
-                                                        href="{{ asset('bundles/article/images/photograph_img4.jpg') }}"
-                                                        title="Team 3"> <img
-                                        src="{{ asset('bundles/article/images/photograph_img4.jpg') }}" alt=""/> </a>
-                        </figure>
-                    </div>
-                </li>
-                <li>
-                    <div class="photo_grid">
-                        <figure class="effect-layla"><a class="fancybox-buttons" data-fancybox-group="button"
-                                                        href="{{ asset('bundles/article/images/photograph_img4.jpg') }}"
-                                                        title="Team 4"> <img
-                                        src="{{ asset('bundles/article/images/photograph_img4.jpg') }}" alt=""/> </a>
-                        </figure>
-                    </div>
-                </li>
-                <li>
-                    <div class="photo_grid">
-                        <figure class="effect-layla"><a class="fancybox-buttons" data-fancybox-group="button"
-                                                        href="{{ asset('bundles/article/images/photograph_img2.jpg') }}"
-                                                        title="Team 5"> <img
-                                        src="{{ asset('bundles/article/images/photograph_img2.jpg') }}" alt=""/> </a>
-                        </figure>
-                    </div>
-                </li>
-                <li>
-                    <div class="photo_grid">
-                        <figure class="effect-layla"><a class="fancybox-buttons" data-fancybox-group="button"
-                                                        href="images/photograph_img3.jpg" title="Team 6"> <img
-                                        src="{{ asset('bundles/article/images/photograph_img3.jpg') }}" alt=""/> </a>
-                        </figure>
-                    </div>
-                </li>
             </ul>
         </div>
 
 
-        <footer id="footer">
-            <div class="footer_top">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                        <div class="footer_widget wow fadeInLeftBig">
-                            <h2>Flickr Images</h2>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                        <div class="footer_widget wow fadeInDown">
-                            <h2>Tag</h2>
-                            <ul class="tag_nav">
-                                <li><a href="#">Games</a></li>
-                                <li><a href="#">Sports</a></li>
-                                <li><a href="#">Fashion</a></li>
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">Life &amp; Style</a></li>
-                                <li><a href="#">Technology</a></li>
-                                <li><a href="#">Photo</a></li>
-                                <li><a href="#">Slider</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                        <div class="footer_widget wow fadeInRightBig">
-                            <h2>Contact</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit.</p>
-                            <address>
-                                Perfect News,1238 S . 123 St.Suite 25 Town City 3333,USA Phone: 123-326-789 Fax:
-                                123-546-567
-                            </address>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer_bottom">
-                <p class="copyright">Copyright &copy; 2045 <a href="index.html">NewsFeed</a></p>
-                <p class="developer">Developed By Wpfreeware</p>
-            </div>
-
-        </footer>
+        {% block footer %}
+            {{ parent() }}
+        {% endblock %}
     </div>
 {% endblock %}
     {% block javascripts %}

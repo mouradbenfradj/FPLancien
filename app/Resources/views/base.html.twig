@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %}NewsFeed!{% endblock %}</title>
+    <title>{% block title %}FPL Updates & Tips!{% endblock %}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,6 +15,51 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/article/assets/css/jquery.fancybox.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/article/assets/css/theme.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/article/assets/css/style.css') }}">
+        <style>
+
+            /* Facebook */
+            .fa-facebook {
+                background: #3B5998;
+                color: white;
+                padding: 20px;
+                font-size: 30px;
+                width: 70px;
+                text-align: center;
+                text-decoration: none;
+            }
+
+            /* Twitter */
+            .fa-twitter {
+                background: #55ACEE;
+                color: white;
+                padding: 20px;
+                font-size: 30px;
+                width: 70px;
+                text-align: center;
+                text-decoration: none;
+            }
+
+            .fa-youtube {
+                background: #bb0000;
+                color: white;
+                padding: 20px;
+                font-size: 30px;
+                width: 70px;
+                text-align: center;
+                text-decoration: none;
+            }
+
+            .fa-instagram {
+                background: #125688;
+                color: white;
+                padding: 20px;
+                font-size: 30px;
+                width: 70px;
+                text-align: center;
+                text-decoration: none;
+            }
+
+        </style>
     {% endblock %}
     <!--[if lt IE 9]>
     {% block javascriptshead %}
@@ -24,7 +69,123 @@
     <![endif]-->
 </head>
 <body>
-{% block body %}{% endblock %}
+{% block body %}
+    {% block news %}
+        {% set index = 0 %}
+        {% for new in news if index <= 6 %}
+            <li>
+                <a href="#"> <img
+                            src="{{ asset('bundles/article/newlogos/JXQESMU.png') }}"
+                            alt="">
+                    {{ new.latestNews }}</a>
+            </li>
+            {% set index = index + 1 %}
+        {% endfor %}
+    {% endblock %}
+    {% block login %}
+
+        <div class="header_top_right">
+          {#  <p>  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                   {{ app.user.firstname }} |
+                    <a style="color: white;" href="{{ path('fos_user_security_logout') }}">
+                        {{ 'logout'|trans({}, 'FOSUserBundle') }}
+                    </a>
+                {% else %}
+                    <a style="color: white;"
+                       href="{{ path('fos_user_security_login') }}">{{ 'login'|trans({}, 'FOSUserBundle') }}</a>
+                {% endif %}
+            </p>
+            #}
+        </div>
+    {% endblock %}
+    {% block dropmenu %}
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+           aria-expanded="false">FPL Updates & Tips Exclusive </a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="{{ path('article_homepage',{'categorie':1}) }}">Captain Choice</a></li>
+            <li><a href="{{ path('article_homepage',{'categorie':2}) }}">TOP 4 Players To Watch</a>
+            </li>
+            <li><a href="{{ path('article_homepage',{'categorie':3}) }}">TOP 3 Differentials</a>
+            </li>
+            <li><a href="{{ path('article_homepage',{'categorie':4}) }}">Gamewwek Top Facts &
+                    Stats</a></li>
+            <li><a href="{{  path('article_homepage',{'categorie':10})  }}">FPL Top Players</a></li>
+        </ul>
+    {% endblock %}
+    {% block fantasyarticles %}
+        <li>
+            <div class="single_iteam">
+                <a ... href="{{ path('article_show',{'id': article.id }) }}"> <img
+                            src="{{ vich_uploader_asset(article, 'imageFile') }}"
+                            alt=""></a>
+                <div class="slider_article">
+                    <h2><a class="slider_tittle" href="#">{{ article.titre }} </a></h2>
+                    <p>{{ article.description  | striptags | slice(0, 200) }} ... </p>
+                </div>
+            </div>
+        </li>
+        {% set index = index + 1 %}
+    {% endblock %}
+    {% block link %}
+        <div class="social_area">
+            <ul class="social_nav">
+                <li class="facebook"><a href="https://www.facebook.com/FPL.Updates.Tips/"></a></li>
+                <li class="twitter"><a href="https://twitter.com/FPLUpdates_Tips"></a></li>
+                <li class="youtube"><a href="https://www.youtube.com/channel/UCJcS0Lq04oMnhECIzZYNtxg"></a></li>
+                <li class="mail"><a href="#"></a></li>
+            </ul>
+        </div>
+    {% endblock %}
+    {% block footer %}
+        <footer id="footer">
+            <div class="footer_top">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="footer_widget wow fadeInLeftBig">
+                            <h2>FPL Updates & Tips Partners</h2>
+                            <div><a href="https://www.facebook.com/World.Of.Fantasy.Arabic"><img src="{{ asset('bundles/article/images/partner1.png') }}" alt=""
+                                                  height="50"
+                                                  width="50"></a></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="footer_widget wow fadeInDown">
+                            <h2>Categories</h2>
+                            <ul class="tag_nav">
+                                <li><a href="{{ path('article_homepage',{'categorie':1}) }}">Captain Choice</a></li>
+                                <li><a href="{{ path('article_homepage',{'categorie':2}) }}">Top 4 Players To Watch</a>
+                                </li>
+                                <li><a href="{{ path('article_homepage',{'categorie':3}) }}">Top 3 Differentials</a>
+                                </li>
+                                <li><a href="{{ path('article_homepage',{'categorie':4}) }}">Team & Players Top
+                                        Facts</a></li>
+                                <li><a href="{{ path('article_homepage',{'categorie':5}) }}">Price Changes</a></li>
+                                <li><a href="{{ path('article_homepage',{'categorie':6}) }}">Injury Updates</a></li>
+                                <li><a href="{{ path('article_homepage',{'categorie':7}) }}">FPL Clean Sheets</a></li>
+                                <li><a href="{{ path('article_homepage',{'categorie':9}) }}">Others</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="footer_widget wow fadeInRightBig">
+                            <h2>Contact</h2>
+                            <p>Email Us : fpl.updates.tips@gmail.com</p>
+                            <a href="https://www.facebook.com/FPL.Updates.Tips/" class="fa fa-facebook"></a>
+                            <a href="https://twitter.com/FPLUpdates_Tips" class="fa fa-twitter"></a>
+                            <a href="https://www.instagram.com/fplupdates_tips/" class="fa fa-instagram"></a>
+                            <a href="https://www.youtube.com/channel/UCJcS0Lq04oMnhECIzZYNtxg"
+                               class="fa fa-youtube"></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer_bottom">
+                <p class="copyright">© Copyright Fantasy Premier League : Updates & Tips 2017. All rights reserved.</p>
+
+            </div>
+        </footer>
+    {% endblock %}{% endblock %}
 {% block javascripts %}{% endblock %}
 </body>
 </html>

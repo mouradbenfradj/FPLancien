@@ -22,7 +22,9 @@ class ArticleController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $articles = $em->getRepository('ArticleBundle:Article')->findAll();
+        $articles = array_reverse($articles);
         $teams = $em->getRepository('FrontendBundle:Team')->findAll();
+        $teams = array_reverse($teams);
 
         return $this->render('article/index.html.twig', array(
             'articles' => $articles,

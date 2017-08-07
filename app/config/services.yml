@@ -4,6 +4,21 @@ parameters:
     #parameter_name: value
 
 services:
-    #service_name:
-    #    class: AppBundle\Directory\ClassName
-    #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+   admin.article:
+        class: ArticleBundle\Admin\ArticleAdmin
+        arguments: [~, ArticleBundle\Entity\Article, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Article }
+        public: true
+   admin.news:
+        class: FrontendBundle\Admin\NewsAdmin
+        arguments: [~, FrontendBundle\Entity\News, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: News }
+        public: true
+   admin.team:
+        class: FrontendBundle\Admin\TeamAdmin
+        arguments: [~, FrontendBundle\Entity\Team, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Team }
+        public: true

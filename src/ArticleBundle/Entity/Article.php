@@ -12,6 +12,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Table(name="article")
  * @ORM\Entity(repositoryClass="ArticleBundle\Repository\ArticleRepository")
  * @Vich\Uploadable
+ * @ORM\HasLifecycleCallbacks()
  */
 class Article
 {
@@ -60,7 +61,6 @@ class Article
     private $imageFile;
 
 
-
     /**
      * @ORM\Column(type="datetime")
      *
@@ -101,7 +101,7 @@ class Article
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
     private $utilisateur;
@@ -161,6 +161,15 @@ class Article
     }
 
     /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        $this->dateCreation = new \DateTime();
+
+    }
+
+    /**
      * Set dateCreation
      *
      * @param \DateTime $dateCreation
@@ -208,29 +217,6 @@ class Article
         return $this->image;
     }
 
-    /**
-     * Set utilisateur
-     *
-     * @param \UserBundle\Entity\User $utilisateur
-     *
-     * @return Article
-     */
-    public function setUtilisateur(\UserBundle\Entity\User $utilisateur)
-    {
-        $this->utilisateur = $utilisateur;
-
-        return $this;
-    }
-
-    /**
-     * Get utilisateur
-     *
-     * @return \UserBundle\Entity\User
-     */
-    public function getUtilisateur()
-    {
-        return $this->utilisateur;
-    }
 
     /**
      * Set description
@@ -302,5 +288,29 @@ class Article
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set utilisateur
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $utilisateur
+     *
+     * @return Article
+     */
+    public function setUtilisateur(\Application\Sonata\UserBundle\Entity\User $utilisateur)
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateur
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
     }
 }
