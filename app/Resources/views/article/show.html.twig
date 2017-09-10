@@ -158,7 +158,8 @@
                                     {% elseif article.categorie == 10 %}
                                         Fixture Analysis
                                     {% endif %}
-                                </a></div>
+                                </a>
+                            </div>
                             <div class="single_page_content"><img class="img-center"
                                                                   src="{{ vich_uploader_asset(article, 'imageFile') }}"
                                                                   alt="">
@@ -178,6 +179,10 @@
 
                                 </blockquote>
 
+                            </div>
+                            <div>
+                                {#width="560" height="315"#}
+                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/OiwEnRCNHFs" frameborder="0" allowfullscreen></iframe>
                             </div>
                             <div class="related_post">
                                 <h2>Related Post <i class="fa fa-thumbs-o-up"></i></h2>
@@ -208,7 +213,7 @@
                             <h2><span>Popular Articles</span></h2>
                             <ul class="spost_nav">
                                 {% set arraycategorie = [] %}
-                                {% for article in articles if (article.categorie <= 4 or article.categorie == 9 or article.categorie == 10 ) and article.categorie > 0 and article.categorie not in arraycategorie and arraycategorie|length <= 6    %}
+                                {% for article in articles if (article.categorie <= 4 or article.categorie == 9 or article.categorie == 10 ) and article.categorie > 0 and article.categorie not in arraycategorie and arraycategorie|length <= 6 %}
                                     {% set arraycategorie = arraycategorie|merge( [article.categorie]  ) %}
                                     <li>
                                         <div class="media wow fadeInDown">
@@ -220,6 +225,25 @@
                                         </div>
                                     </li>
                                 {% endfor %}
+                                <iframe frameborder="0"  scrolling="no" width="100%" height="550" src="https://www.fctables.com/england/premier-league/iframe/?type=table&lang_id=2&country=67&template=10&team=&timezone=Africa/Lagos&time=24&po=1&ma=0&wi=0&dr=0&los=0&gf=0&ga=0&gd=0&pts=1&ng=0&form=0&width=100%&height=550&font=Verdana&fs=12&lh=22&bg=FFFFFF&fc=333333&logo=1&tlink=1&scfs=22&scfc=333333&scb=1&sclg=1&teamls=80&ths=1&thb=1&thba=FFFFFF&thc=000000&bc=dddddd&hob=f5f5f5&hobc=ebe7e7&lc=333333&sh=1&hfb=1&hbc=3bafda&hfc=FFFFFF"></iframe><div style="text-align:center;"></div>
+                                <script type="text/javascript">
+                                    (function (d, s, id) {
+                                        var js,
+                                            fjs = d.getElementsByTagName(s)[0],
+                                            r = Math.floor(new Date().getTime() / 1000000);
+                                        if (d.getElementById(id)) {
+                                            return;
+                                        }
+                                        js = d.createElement(s);
+                                        js.id = id;
+                                        js.async = 1;
+                                        js.src = "https://www.opinionstage.com/assets/loader.js?" + r;
+                                        fjs.parentNode.insertBefore(js, fjs);
+                                    }(document, 'script', 'os-widget-jssdk'));
+                                </script>
+                                <div class="os_poll -align-center col-lg-12 col-md-12 col-sm-12" data-path="/polls/2460456"></div>
+
+
                             </ul>
                         </div>
                         <div class="single_sidebar">
@@ -234,13 +258,20 @@
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="category">
                                     <ul>
-                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':1}) }}">Captain Choice</a></li>
-                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':2}) }}">TOP 4 Players To Watch</a></li>
-                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':4}) }}">TOP 3 Differentials</a></li>
-                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':3}) }}">Gamewwek Top Facts & Stats</a></li>
-                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':5}) }}">Price Changes</a></li>
-                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':6}) }}">Injury Updates</a></li>
-                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':7}) }}">FPL Clean Sheets</a></li>
+                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':1}) }}">Captain
+                                                Choice</a></li>
+                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':2}) }}">TOP
+                                                4 Players To Watch</a></li>
+                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':4}) }}">TOP
+                                                3 Differentials</a></li>
+                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':3}) }}">Gamewwek
+                                                Top Facts & Stats</a></li>
+                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':5}) }}">Price
+                                                Changes</a></li>
+                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':6}) }}">Injury
+                                                Updates</a></li>
+                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':7}) }}">FPL
+                                                Clean Sheets</a></li>
                                     </ul>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="video">
@@ -254,29 +285,38 @@
                                     <ul class="spost_nav">
                                         <li>
                                             <div class="media wow fadeInDown">
-                                                <div class="media-body"> <a class="catg_title"> Don't chose too many differentials! Make sure to include some safe choices! </a> </div>
+                                                <div class="media-body"><a class="catg_title"> Don't chose too many
+                                                        differentials! Make sure to include some safe choices! </a>
+                                                </div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="media wow fadeInDown">
-                                                <div class="media-body"> <a class="catg_title"> Try not to Spend more than £9m on GK!
-                                                        Remember that you will play only 1 of them! </a> </div>
+                                                <div class="media-body"><a class="catg_title"> Try not to Spend more
+                                                        than £9m on GK!
+                                                        Remember that you will play only 1 of them! </a></div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="media wow fadeInDown">
-                                                <div class="media-body"> <a class="catg_title">  Don't buy a player for a single Gameweek! Always plan </a> </div>
+                                                <div class="media-body"><a class="catg_title"> Don't buy a player for a
+                                                        single Gameweek! Always plan </a></div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="media wow fadeInDown">
-                                                <div class="media-body"> <a class="catg_title">  You want players who can score, assist or get cleansheets!
-                                                        Please don't waste your budget on defensive midfielders </a> </div>
+                                                <div class="media-body"><a class="catg_title"> You want players who can
+                                                        score, assist or get cleansheets!
+                                                        Please don't waste your budget on defensive midfielders </a>
+                                                </div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="media wow fadeInDown">
-                                                <div class="media-body"> <a href="{{ path('article_homepage',{'categorie':1}) }}" class="catg_title"> Never captain defenders and goalkeeprs! Always Follow Our Captain Choices </a> </div>
+                                                <div class="media-body"><a
+                                                            href="{{ path('article_homepage',{'categorie':1}) }}"
+                                                            class="catg_title"> Never captain defenders and goalkeeprs!
+                                                        Always Follow Our Captain Choices </a></div>
                                             </div>
                                         </li>
                                     </ul>
@@ -299,7 +339,9 @@
                         <div class="single_sidebar wow fadeInDown">
                             <h2><span>Links</span></h2>
                             <ul>
-                                <li class="facebook"><a href="https://www.facebook.com/groups/FPLUpdates.Tips/?ref=bookmarks">Facebook Group</a></li>
+                                <li class="facebook"><a
+                                            href="https://www.facebook.com/groups/FPLUpdates.Tips/?ref=bookmarks">Facebook
+                                        Group</a></li>
                                 <li><a href="#">About Us</a></li>
                                 <li class="mail"><a href="#">Contact Us</a></li>
                             </ul>

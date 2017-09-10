@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>FPL Updates&Tips About Us Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free HTML5 Template by FREEHTML5.CO"/>
+    <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive"/>
+    <meta name="author" content="FREEHTML5.CO"/>
+
+    <!--
+      //////////////////////////////////////////////////////
+
+      FREE HTML5 TEMPLATE
+      DESIGNED & DEVELOPED by FREEHTML5.CO
+
+      Website: 		http://freehtml5.co/
+      Email: 			info@freehtml5.co
+      Twitter: 		http://twitter.com/fh5co
+      Facebook: 		https://www.facebook.com/fh5co
+
+      //////////////////////////////////////////////////////
+       -->
+
+    <!-- Facebook and Twitter integration -->
+    <meta property="og:title" content=""/>
+    <meta property="og:image" content=""/>
+    <meta property="og:url" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:description" content=""/>
+    <meta name="twitter:title" content=""/>
+    <meta name="twitter:image" content=""/>
+    <meta name="twitter:url" content=""/>
+    <meta name="twitter:card" content=""/>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    {#<link rel="shortcut icon" href="favicon.ico">#}
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet'
+          type='text/css'>
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="{{ asset('bundles/frontend/css/animate.css') }}">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="{{ asset('bundles/frontend/css/icomoon.css') }}">
+    <!-- Simple Line Icons -->
+    <link rel="stylesheet" href="{{ asset('bundles/frontend/css/simple-line-icons.css') }}">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{{ asset('bundles/frontend/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/frontend/css/owl.theme.default.min.css') }}">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="{{ asset('bundles/frontend/css/bootstrap.css') }}">
+
+    <!--
+    Default Theme Style
+    You can change the style.css (default color purple) to one of these styles
+
+    1. pink.css
+    2. blue.css
+    3. turquoise.css
+    4. orange.css
+    5. lightblue.css
+    6. brown.css
+    7. green.css
+
+    -->
+    <link rel="stylesheet" href="{{ asset('bundles/frontend/css/style.css') }}">
+
+    <!-- Styleswitcher ( This style is for demo purposes only, you may delete this anytime. ) -->
+    <link rel="stylesheet" id="theme-switch" href="{{ asset('bundles/frontend/css/style.css') }}">
+    <!-- End demo purposes only -->
+
+
+    <style>
+        /* For demo purpose only */
+
+        /* For Demo Purposes Only ( You can delete this anytime :-) */
+        #colour-variations {
+            padding: 10px;
+            -webkit-transition: 0.5s;
+            -o-transition: 0.5s;
+            transition: 0.5s;
+            width: 140px;
+            position: fixed;
+            left: 0;
+            top: 100px;
+            z-index: 999999;
+            background: #fff;
+            /*border-radius: 4px;*/
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            -webkit-box-shadow: 0 0 9px 0 rgba(0, 0, 0, .1);
+            -moz-box-shadow: 0 0 9px 0 rgba(0, 0, 0, .1);
+            -ms-box-shadow: 0 0 9px 0 rgba(0, 0, 0, .1);
+            box-shadow: 0 0 9px 0 rgba(0, 0, 0, .1);
+        }
+
+        #colour-variations.sleep {
+            margin-left: -140px;
+        }
+
+        #colour-variations h3 {
+            text-align: center;;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #777;
+            margin: 0 0 10px 0;
+            padding: 0;;
+        }
+
+        #colour-variations ul,
+        #colour-variations ul li {
+            padding: 0;
+            margin: 0;
+        }
+
+        #colour-variations li {
+            list-style: none;
+            display: inline;
+        }
+
+        #colour-variations li a {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            float: left;
+            margin: 5px;
+        }
+
+        #colour-variations li a[data-theme="style"] {
+            background: #6173f4;
+        }
+
+        #colour-variations li a[data-theme="pink"] {
+            background: #f64662;
+        }
+
+        #colour-variations li a[data-theme="blue"] {
+            background: #2185d5;
+        }
+
+        #colour-variations li a[data-theme="turquoise"] {
+            background: #00b8a9;
+        }
+
+        #colour-variations li a[data-theme="orange"] {
+            background: #ff6600;
+        }
+
+        #colour-variations li a[data-theme="lightblue"] {
+            background: #5585b5;
+        }
+
+        #colour-variations li a[data-theme="brown"] {
+            background: #a03232;
+        }
+
+        #colour-variations li a[data-theme="green"] {
+            background: #65d269;
+        }
+
+        .option-toggle {
+            position: absolute;
+            right: 0;
+            top: 0;
+            margin-top: 5px;
+            margin-right: -30px;
+            width: 30px;
+            height: 30px;
+            background: #f64662;
+            text-align: center;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+            -webkit-box-shadow: 0 0 9px 0 rgba(0, 0, 0, .1);
+            -moz-box-shadow: 0 0 9px 0 rgba(0, 0, 0, .1);
+            -ms-box-shadow: 0 0 9px 0 rgba(0, 0, 0, .1);
+            box-shadow: 0 0 9px 0 rgba(0, 0, 0, .1);
+        }
+
+        .option-toggle i {
+            top: 2px;
+            position: relative;
+        }
+
+        .option-toggle:hover, .option-toggle:focus, .option-toggle:active {
+            color: #fff;
+            text-decoration: none;
+            outline: none;
+        }
+    </style>
+    <!-- End demo purposes only -->
+
+
+    <!-- Modernizr JS -->
+    <script src="{{ asset('bundles/frontend/js/modernizr-2.6.2.min.js') }}"></script>
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="{{ asset('bundles/frontend/js/respond.min.js') }}"></script>
+    <![endif]-->
+
+</head>
+<body>
+<header role="banner" id="fh5co-header">
+    <div class="container">
+        <!-- <div class="row"> -->
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <!-- Mobile Toggle Menu Button -->
+                <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar"
+                   aria-expanded="false" aria-controls="navbar"><i></i></a>
+                <a class="navbar-brand" href="http://www.fantasy-ut.com/">FPL Updates&Tips</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#" data-nav-section="home"><span>Home</span></a></li>
+                    <li><a href="#" data-nav-section="about"><span>About</span></a></li>
+                    <li><a href="#" data-nav-section="team"><span>Team</span></a></li>
+                    <li><a href="#" data-nav-section="services"><span>Features</span></a></li>
+                    <li><a href="#" data-nav-section="testimonials"><span>Testimonials</span></a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- </div> -->
+    </div>
+</header>
+
+<div id="slider" data-section="home">
+    <div class="owl-carousel owl-carousel-fullwidth">
+        <!-- You may change the background color here. -->
+        <div class="item" style="background: #352f44;">
+            <div class="container" style="position: relative;">
+                <div class="row">
+                    <div class="col-md-7 col-sm-7">
+                        <div class="fh5co-owl-text-wrap">
+                            <div class="fh5co-owl-text">
+                                <h1 class="fh5co-lead to-animate">First Facebook Page About FPL</h1>
+                                <h2 class="fh5co-sub-lead to-animate"> Is It Real Life or Fantasy<a
+                                            href="http://www.fantasy-ut.com/" target="_blank"><br>FPL Updates&Tips</a></h2>
+                                <p class="to-animate-2"><a href="https://www.facebook.com/FPL.Updates.Tips/"
+                                                           class="btn btn-primary btn-lg">Visit Our Facbook Page</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-md-push-1 col-sm-4 col-sm-push-1 iphone-image">
+                        <div class="iphone to-animate-2"><img src="{{ asset('bundles/frontend/images/iphone-1.png') }}"
+                                                              alt="iPhone facebook"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- You may change the background color here.  -->
+        <div class="item" style="background: #38569f;">
+            <div class="container" style="position: relative;">
+                <div class="row">
+                    <div class="col-md-7 col-md-push-1 col-md-push-5 col-sm-7 col-sm-push-1 col-sm-push-5">
+                        <div class="fh5co-owl-text-wrap">
+                            <div class="fh5co-owl-text">
+                                <h1 class="fh5co-lead to-animate">One Of The Best FPL Twitter Accounts</h1>
+                                <h2 class="fh5co-sub-lead to-animate"> FPL Updates & Tips : The team behind your team <a
+                                            href="https://twitter.com/FPLUpdates_Tips"
+                                            target="_blank"><br>@FPLUpdates_Tips</a></h2>
+                                <p class="to-animate-2"><a href="https://twitter.com/FPLUpdates_Tips"
+                                                           class="btn btn-primary btn-lg">Visit Our Twitter Account</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-md-pull-7 col-sm-4 col-sm-pull-7 iphone-image">
+                        <div class="iphone to-animate-2"><img src="{{ asset('bundles/frontend/images/iphone-2.png') }}"
+                                                              alt="iPhone Twitter"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="item" style="background-image:url({{ asset('bundles/frontend/images/slide_5.jpg') }})">
+            <div class="overlay"></div>
+            <div class="container" style="position: relative;">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center">
+                        <div class="fh5co-owl-text-wrap">
+                            <div class="fh5co-owl-text">
+                                <h1 class="fh5co-lead to-animate">Fantasy Premier League : Updates & Tips</h1>
+                                <h2 class="fh5co-sub-lead to-animate">We Help You Build a #Muscular Squad <a href="http://www.fantasy-ut.com/" target="_blank"><br>fantasy-ut.com</a></h2>
+                                <p class="to-animate-2"><a href="https://www.youtube.com/watch?v=Im3UObTLTGw"
+                                                           target="_blank" class="btn btn-primary btn-lg">Watch Our
+                                        Promo Video</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="fh5co-about-us" data-section="about">
+    <div class="container">
+        <div class="row row-bottom-padded-lg" id="about-us">
+            <div class="col-md-12 section-heading text-center">
+                <h2 class="to-animate">About Us</h2>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 to-animate">
+                        <h3>Facebook Page Since 2013 , Twitter Account Since 2014 , Instagram , Youtube and Website
+                            Since 2017 </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 to-animate">
+                <img src="{{ asset('bundles/frontend/images/imgabou.jpg') }}" class="img-responsive img-rounded"
+                     alt="Free HTML5 Template">
+            </div>
+            <div class="col-md-4 to-animate">
+                <h2>How we got started</h2>
+                <p>It All Started In The End Of The 2012/2013 Season , I , Admin #H17 Started The Facebook Page To Share
+                    My Fantasy Knowledge and Experience With Other FPL Managers! </p>
+                <p>Too Many Admins Joined After That , But Only The Best Remained! We Have Agreed To Guide Our Fans To
+                    Make The Right FPL Decisions By Providing Them with The Latest Updates & Tips!</p>
+                <p><a href="#" data-nav-section="team" class="btn btn-primary">Meet the team</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="fh5co-pricing" data-section="team">
+    <div class="container">
+        <div class="row" id="team">
+            <div class="col-md-12 section-heading text-center to-animate">
+                <h2>Team</h2>
+            </div>
+            <div class="col-md-12">
+                <div class="row row-bottom-padded-lg">
+                    <div class="col-md-4 text-center to-animate">
+                        <div class="person">
+                            <img src="{{ asset('bundles/frontend/images/haythem.jpg') }}"
+                                 class="img-responsive img-rounded" alt="Person">
+                            <h3 class="name">Haythem Il Banney ( #H17 )</h3>
+                            <div class="position">The Founder & Head Administrator</div>
+                            <p> 24 Years Old , From Tunisia , Man Utd Fan , Computer Engineering Student , FPL TUNISIA
+                                Champion In 2016/17 </p>
+                            <ul class="social social-circle">
+                                <li><a href="https://www.facebook.com/HaYtHeMoViC17Official/"><i
+                                                class="icon-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/HaYtHeMoViC17"><i class="icon-twitter"></i></a></li>
+                                <li><a href="https://www.instagram.com/haythemovic17/"><i
+                                                class="icon-instagram"></i></a></li>
+                                <li><a href="https://www.youtube.com/channel/UCyzHz7UliOZMl1ijiMaY9Rg"><i
+                                                class="icon-youtube"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center to-animate">
+                        <div class="person">
+                            <img src="{{ asset('bundles/frontend/images/rhyme.jpg') }}"
+                                 class="img-responsive img-rounded" alt="Person">
+                            <h3 class="name"> Oussema Dhieb ( #RhymeGuy )</h3>
+                            <div class="position">Videographer : Creating video content for our Youtube Channel</div>
+                            <p> I'm Rhyme Guy. I'm 23 years old. I'm a Youtuber. My favorite hobbies are watching the PL
+                                and playing FPL. I also love Vlogging and gaming. </p>
+
+                            <ul class="social social-circle">
+                                <li><a href="https://www.facebook.com/theRhymeGuy"><i class="icon-facebook"></i></a>
+                                </li>
+                                <li><a href="https://www.instagram.com/rhyme_guy/"><i class="icon-instagram"></i></a>
+                                </li>
+                                <li><a href="https://www.youtube.com/c/RhymesOussemaOfficial"><i
+                                                class="icon-youtube"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4 text-center to-animate">
+                        <div class="person">
+                            <img src="{{ asset('bundles/frontend/images/bozidar.jpg') }}"
+                                 class="img-responsive img-rounded" alt="Person">
+                            <h3 class="name"> Bozidar Peric </h3>
+                            <div class="position"> Website Designer</div>
+                            <p> CEO & Founder at Manchester United Serbia, Freelancer at DesignCrowd , Studies at Adobe
+                                Education Exchange , Lives in Manchester, United Kingdom </p>
+                            <ul class="social social-circle">
+                                <li><a href="https://www.facebook.com/bozidar.peric"><i class="icon-facebook"></i></a>
+                                </li>
+                                <li><a href="http://mufchq.tumblr.com/"><i class="icon-tumblr"></i></a></li>
+                                <li><a href="https://twitter.com/Fristajler"><i class="icon-twitter"></i></a></li>
+                                <li><a href="https://www.instagram.com/mufcserbia/"><i class="icon-instagram"></i></a>
+                                </li>
+                                <li><a href="https://www.behance.net/bperic"><i class="icon-behance"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 text-center to-animate">
+                        <div class="person">
+                            <img src="{{ asset('bundles/frontend/images/prachi.jpg') }}"
+                                 class="img-responsive img-rounded" alt="Person">
+                            <h3 class="name"> Aprajita Sharma ( #PS8 )</h3>
+                            <div class="position"> Suggestions post and team management</div>
+                            <p> 28y/o , From Chandigarh India, residing in Birmingham for work. , I work as a team lead
+                                in Wipro. </p>
+                            <ul class="social social-circle">
+
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4 text-center to-animate">
+                        <div class="person">
+                            <img src="{{ asset('bundles/frontend/images/blal.jpg') }}"
+                                 class="img-responsive img-rounded" alt="Person">
+                            <h3 class="name"> Blal Al-Swah ( #Seeho )</h3>
+                            <div class="position">FPL STATS & FACTS</div>
+                            <p> 26 yrs old , from Cairo, Egypt , Communication Engineer </p>
+                            <ul class="social social-circle">
+                                <li><a href="https://www.facebook.com/deathly.hallow.16"><i
+                                                class="icon-facebook"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 text-center to-animate">
+                        <div class="person">
+                            <img src="{{ asset('bundles/frontend/images/salah.jpg') }}"
+                                 class="img-responsive img-rounded" alt="Person">
+                            <h3 class="name"> Salah Mohamed ( #AmericaFinest )</h3>
+                            <div class="position"> FPL Clean Sheet analyst</div>
+                            <p> 17 years old , Born and raised in South Africa.Currently resides in the States.Chelsea
+                                fan , Medical student at the University of Minnesota.Part time footballer. </p>
+                            <ul class="social social-circle">
+                                <li><a href="https://www.facebook.com/saleh.omar.39982?fref=ufi"><i
+                                                class="icon-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/salehomar1230"><i class="icon-twitter"></i></a></li>
+                                <li><a href="https://www.instagram.com/this_is_salehomar/"><i
+                                                class="icon-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 text-center to-animate">
+                        <div class="person">
+                            <img src="{{ asset('bundles/frontend/images/johan.jpg') }}"
+                                 class="img-responsive img-rounded" alt="Person">
+                            <h3 class="name"> Johan Qaiyum ( #Cockroach )</h3>
+                            <div class="position"> Fixtures Analysing</div>
+                            <p> Hi guyz! I'm from Bangladesh,21 years old and I never walk alone </p>
+                            <ul class="social social-circle">
+                                <li><a href="https://fb.com/kayum129"><i class="icon-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/Bla4Q"><i class="icon-twitter"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 text-center to-animate">
+                        <div class="person">
+                            <img src="{{ asset('bundles/frontend/images/khalil.jpg') }}"
+                                 class="img-responsive img-rounded" alt="Person">
+                            <h3 class="name"> Khalil Darmoul ( #Drimi ) </h3>
+                            <div class="position"> Weekly Wildcard and the Shoting stats</div>
+                            <p> A 21 year-old Marketing student, Tunisian and Manchester United fan! </p>
+                            <ul class="social social-circle">
+                                <li><a href="https://www.facebook.com/khalilou.HBK?fref=ufi"><i
+                                                class="icon-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/MufcKhalilou69"><i class="icon-twitter"></i></a></li>
+                                <li><a href="https://www.instagram.com/khalilouhbb/"><i class="icon-instagram"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4 text-center to-animate">
+                        <div class="person">
+                            <img src="{{ asset('bundles/frontend/images/masry.jpg') }}"
+                                 class="img-responsive img-rounded" alt="Person">
+                            <h3 class="name">David Masry ( #Masry )</h3>
+                            <div class="position">Man of any Duty</div>
+                            <p> Physical Therapist at International Tennis Federation and Liverpool fan , 23 years old ,
+                                from Shoubra, Egypt , and now I live in Sharm Elsheikh , Egypt </p>
+                            <ul class="social social-circle">
+                                <li><a href="https://www.facebook.com/DEgyptX"><i class="icon-facebook"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4 text-center to-animate">
+                        <div class="person">
+                            <img src="{{ asset('bundles/frontend/images/wonder.jpg') }}"
+                                 class="img-responsive img-rounded" alt="Person">
+                            <h3 class="name">Wonder Yaw Boakye Hayford ( #IAmWonder )</h3>
+                            <div class="position"> Injury Updates & Managing IG account</div>
+                            <p> ▪ 24yrs, from Cape Coast, Ghana ▪ Professional Nurse, Song Writer, Man Utd fan!</p>
+                            <ul class="social social-circle">
+                                <li><a href="https://www.facebook.com/wonder.yawboakyehayford?fref=ufi"><i
+                                                class="icon-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/YawBoakye8?s=08"><i class="icon-twitter"></i></a></li>
+                                <li><a href="https://www.instagram.com/yawmchayford/"><i class="icon-instagram"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4 text-center to-animate">
+                        <div class="person">
+                            <img src="{{ asset('bundles/frontend/images/akshat.jpg') }}"
+                                 class="img-responsive img-rounded" alt="Person">
+                            <h3 class="name"> Akshat Mathur ( #AM10 )</h3>
+                            <div class="position"> Replying to Visitor Posts & Dream Team of the Week + Highest Points
+                                team of the Week!
+                            </div>
+                            <p> 22 from Delhi, India | Man United Fan | Electrical Engineer | Foodie </p>
+                            <ul class="social social-circle">
+                                <li><a href="https://www.facebook.com/mathur.akshat?fref=ufi"><i
+                                                class="icon-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/aksmat95"><i class="icon-twitter"></i></a></li>
+                                <li><a href="https://www.instagram.com/aksmat95/"><i class="icon-instagram"></i></a>
+                                </li>
+                                <li><a href="https://www.youtube.com/channel/UC5jO_NKyDTpuK06MnLmKCvw"><i
+                                                class="icon-youtube"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4 text-center to-animate">
+                        <div class="person">
+                            <img src="{{ asset('bundles/frontend/images/biebek.jpg') }}"
+                                 class="img-responsive img-rounded" alt="Person">
+                            <h3 class="name"> Biebek Chamlagain ( #Biebek )</h3>
+                            <div class="position"> Scout for the Page offering: </br> - Players To Watch Every GW </br>
+                                - 1 Player In 1 Player Out (Admin Suggestion) </br> - Special articles in between the
+                                season
+                            </div>
+                            <p> Nepali currently studying in University of Louisiana Monroe, USA | Through & Through
+                                Manchester City Fan | Blogger | Amateur Photographer | Writer </p>
+                            <ul class="social social-circle">
+                                <li><a href="https://www.facebook.com/biebekchamlagain"><i
+                                                class="icon-facebook"></i></a></li>
+                                <li><a href="http://biebek.blogspot.com/"><i class="icon-bookmark"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 text-center to-animate">
+                        <div class="person">
+                            <img src="{{ asset('bundles/frontend/images/kyle.jpg') }}"
+                                 class="img-responsive img-rounded" alt="Person">
+                            <h3 class="name">Kyle Turnbull ( #KT9 )</h3>
+                            <div class="position">Price Changes</div>
+                            <p> In school / pro gamer , Newcastle fan ,17 years old ...Born in South Africa and live in
+                                South Africa </p>
+                            <ul class="social social-circle">
+                                <li><a href="https://www.facebook.com/kyle.turnbull.9809"><i class="icon-facebook"></i></a>
+                                </li>
+                                <li><a href="https://www.instagram.com/kyle_turnbull/"><i
+                                                class="icon-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 text-center to-animate">
+                        <div class="person">
+                            <img src="{{ asset('bundles/frontend/images/bibidh.jpg') }}"
+                                 class="img-responsive img-rounded" alt="Person">
+                            <h3 class="name"> Bibidh Subedi ( #BS )</h3>
+                            <div class="position"> Statistics and Price Changes</div>
+                            <p> Age : 19 , Blogger, Journalist, Arsenal Fan , Country : Nepal </p>
+                            <ul class="social social-circle">
+                                <li><a href="https://www.facebook.com/BibidhCr?fref=ufi"><i
+                                                class="icon-facebook"></i></a></li>
+                                <li><a href="https://www.instagram.com/bibidhcr/"><i class="icon-instagram"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4 text-center to-animate">
+                        <div class="person">
+                            <img src="{{ asset('bundles/frontend/images/ryan.jpg') }}"
+                                 class="img-responsive img-rounded" alt="Person">
+                            <h3 class="name"> Ryan King ( #LCFC83 )</h3>
+                            <div class="position"> Moderating The Group</div>
+                            <p>Lives in Skegness , Leicester City Fan </p>
+                            <ul class="social social-circle">
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 text-center to-animate">
+                        <div class="person">
+                            <img src="{{ asset('bundles/frontend/images/mourad.jpg') }}"
+                                 class="img-responsive img-rounded" alt="Person">
+                            <h3 class="name"> Mourad Ben Fradj</h3>
+                            <div class="position"> Website Developer</div>
+                            <p></p>
+                            <ul class="social social-circle">
+                                <li><a href="https://www.facebook.com/Sniper160589"><i class="icon-facebook"></i></a>
+                                </li>
+                                <li><a href="https://twitter.com/MBF6m"><i class="icon-twitter"></i></a></li>
+                                <li><a href="https://www.instagram.com/mourad_ben_fradj/"><i class="icon-instagram"></i></a>
+                                </li>
+                                <li><a href="https://www.youtube.com/channel/UCXmyqr95sN0EM5lsB2PqvXw"><i
+                                                class="icon-youtube"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="fh5co-our-services" data-section="services">
+    <div class="container">
+        <div class="row row-bottom-padded-sm">
+            <div class="col-md-12 section-heading text-center">
+                <h2 class="to-animate">Our Features</h2>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 to-animate">
+                        <h3>We pride on being the most liked page on Facebook for Fantasy Premier League. We have been
+                            entrusted by millions of fantasy enthusiast on different social media platform, from all
+                            around the world. Here are our salient features that have kept us a step ahead from the
+                            crowd:</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="box to-animate">
+                    <div class="icon colored-1"><span><img src="{{ asset('bundles/frontend/images/captain.png') }}"
+                                                           class="img-responsive img-rounded" alt="Person"></span></div>
+                    <h3>GW Captain Choice :</h3>
+                    <p> One thing is simple in fantasy - get your captain choice right, and you are almost certain to
+                        get above average points in the gameweek. We provide you with the safest and most popular
+                        captain choices every week as obtained from the polls conducted among admins and thousands of
+                        fantasy enthusiasts on our social media platforms. </p>
+                </div>
+                <div class="box to-animate">
+                    <div class="icon colored-3"><span><img src="{{ asset('bundles/frontend/images/top4.png') }}"
+                                                           class="img-responsive img-rounded" alt="Person"></span></div>
+                    <h3>Top 4 Players To Watch :</h3>
+                    <p>This weekly segment offers you a player from each of the four different positions in FPL, who
+                        holds the maximum prospect of performing well in the given week based on an analysis of fixture,
+                        form, tendency, and underlying stats. </p>
+                </div>
+                <div class="box to-animate">
+                    <div class="icon colored-2"><span><img src="{{ asset('bundles/frontend/images/stats.png') }}"
+                                                           class="img-responsive img-rounded" alt="Person"></span></div>
+                    <h3>Facts and Stats :</h3>
+                    <p> Sterling scores for fun against Bournemouth. Similarly, Lukaku had scored in each home fixtures
+                        for more than 5 consecutive games last season. In this weekly series, we update you with all the
+                        stats and records that are going to effect each fixture. </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box to-animate">
+                    <div class="icon colored-1"><span><img src="{{ asset('bundles/frontend/images/diff3.png') }}"
+                                                           class="img-responsive img-rounded" alt="Person"></span></div>
+                    <h3>Top 3 Differentials :</h3>
+                    <p> You cannot move forward unless you stand out from a crowd! We ensure you have a blend of
+                        bandwagons and differentials, offering you the most potent and overlooked 3 players that makes
+                        your team lethal and safe for each game-week. </p>
+                </div>
+                <div class="box to-animate">
+                    <div class="icon colored-5"><span><img src="{{ asset('bundles/frontend/images/pricechange.png') }}"
+                                                           class="img-responsive img-rounded" alt="Person"></i></span>
+                    </div>
+                    <h3> Price Changes: </h3>
+                    <p> Sudden prize rise and fall of FPL players can jeopardize your transfer plans, resulting a
+                        catastrophic game week. However, we offer you the possible price changes beforehand from the
+                        most trusted and reliable tool that we have at our disposal. </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="box to-animate">
+                    <div class="icon colored-4"><span><img
+                                    src="{{ asset('bundles/frontend/images/injuryupdates.png') }}"
+                                    class="img-responsive img-rounded" alt="Person"></i></span></div>
+                    <h3>Injury Updates :</h3>
+                    <p> We keep ourselves abreast on all 20 Premier League clubs over the weeks and decipher all the
+                        subtle hints from the pre match conferences of each team, providing you with players' status to
+                        make sure that you are able to make your transfer decision wisely and are able to field a fit
+                        team. </p>
+                </div>
+                <div class="box to-animate">
+                    <div class="icon colored-6"><span><img src="{{ asset('bundles/frontend/images/cs.png') }}"
+                                                           class="img-responsive img-rounded" alt="Person"></i></span>
+                    </div>
+                    <h3>FPL Clean sheets:</h3>
+                    <p> We have the world's strongest and most reliable algorithm to predict the most difficult aspect
+                        of FPL: clean sheets odds. We provide you with clean sheets of each team every game week. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="fh5co-testimonials" data-section="testimonials">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 section-heading text-center">
+                <h2 class="to-animate">Happy FPL Managers Says...</h2>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 subtext to-animate">
+                        <h3>Our incessant endeavors have not let the voices of our readers and audiences go unheard and
+                            unsolved. Read what some of them have to say about us in their on words:</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="box-testimony to-animate">
+                    <blockquote>
+                        <span class="quote"><span><i class="icon-quote-left"></i></span></span>
+                        <p> Excellent and Helpful Page. Tons of knowledge about football and does really good solving
+                            the queries (Y) and yes does its best to make the Competition healthy <3 </p>
+                    </blockquote>
+                    <p class="author">Farhan Yameen <a href="http://freehtml5.co/" target="_blank"></a> <span
+                                class="subtext">Pakistan</span></p>
+                </div>
+
+
+            </div>
+            <div class="col-md-4">
+                <div class="box-testimony to-animate">
+                    <blockquote>
+                        <span class="quote"><span><i class="icon-quote-left"></i></span></span>
+                        <p> When you are in doubt about FPL and you need some advice or a venue to discuss your ideas
+                            there is no better place than Fantasy Premier League : Updates & Tips </p>
+                    </blockquote>
+                    <p class="author">Rahul Meparambil <a href="#"></a> <span class="subtext">India</span></p>
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="box-testimony to-animate">
+                    <blockquote>
+                        <span class="quote"><span><i class="icon-quote-left"></i></span></span>
+                        <p> It's a fantastic page for the fantasy managers.It's very much informative which gives any
+                            manager a facile environment to create team and transfer. </p>
+                    </blockquote>
+                    <p class="author"> Redwan Ul Haque <a href="#"></a> <span class="subtext">Bangladesh</span></p>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="box-testimony to-animate">
+                    <blockquote>
+                        <span class="quote"><span><i class="icon-quote-left"></i></span></span>
+                        <p> The most active, informative and interactive FPL page. FPL becomes less fantasy and more fun
+                            with these guys.</p>
+                    </blockquote>
+                    <p class="author">Ambar Gupta <a href="#"></a> <span class="subtext">India</span></p>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="box-testimony to-animate">
+                    <blockquote>
+                        <span class="quote"><span><i class="icon-quote-left"></i></span></span>
+                        <p> Excellent page for not only the new Fantasy Managers but also the Experienced ones. Great
+                            analysis of each and every key players no matter which club he's from. Best in the
+                            business </p>
+                    </blockquote>
+                    <p class="author">Rezaul Karim <a href="" target="_blank"></a> <span
+                                class="subtext">Bangladesh</span></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer id="footer" role="contentinfo">
+    <div class="container">
+        <div class="row row-bottom-padded-sm">
+            <div class="col-md-12">
+                <p class="copyright text-center"><a href="http://www.fantasy-ut.com/">FPL Updates&Tips</a>. All Rights
+                    Reserved. <br> <a href="fantasy-ut.com" target="_blank"></a><a href="" target="_blank"></a><a
+                            href="" target="_blank"></a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="social social-circle">
+                    <li><a href="https://twitter.com/FPLUpdates_Tips"><i class="icon-twitter"></i></a></li>
+                    <li><a href="https://www.facebook.com/FPL.Updates.Tips"><i class="icon-facebook"></i></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCJcS0Lq04oMnhECIzZYNtxg"><i class="icon-youtube"></i></a>
+                    </li>
+                    <li><a href="https://www.instagram.com/fplupdates_tips/"><i class="icon-instagram"></i></a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- End demo purposes only -->
+
+
+<!-- jQuery -->
+<script src="{{ asset('bundles/frontend/js/jquery.min.js') }}"></script>
+<!-- jQuery Easing -->
+<script src="{{ asset('bundles/frontend/js/jquery.easing.1.3.js') }}"></script>
+<!-- Bootstrap -->
+<script src="{{ asset('bundles/frontend/js/bootstrap.min.js') }}"></script>
+<!-- Waypoints -->
+<script src="{{ asset('bundles/frontend/js/jquery.waypoints.min.js') }}"></script>
+<!-- Owl Carousel -->
+<script src="{{ asset('bundles/frontend/js/owl.carousel.min.js') }}"></script>
+
+<!-- For demo purposes only styleswitcher ( You may delete this anytime ) -->
+<script src="{{ asset('bundles/frontend/js/jquery.style.switcher.js') }}"></script>
+<script>
+    $(function () {
+        $('#colour-variations ul').styleSwitcher({
+            defaultThemeId: 'theme-switch',
+            hasPreview: false,
+            cookie: {
+                expires: 30,
+                isManagingLoad: true
+            }
+        });
+        $('.option-toggle').click(function () {
+            $('#colour-variations').toggleClass('sleep');
+        });
+    });
+</script>
+<!-- End demo purposes only -->
+
+<!-- Main JS (Do not remove) -->
+<script src="{{ asset('bundles/frontend/js/main.js') }}"></script>
+
+</body>
+</html>

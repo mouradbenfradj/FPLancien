@@ -28,7 +28,7 @@
 
                         <div><a href="#">
                                 <img src="{{ asset('bundles/article/newlogos/generals.jpg') }}" alt=""
-                                              width="100%"></a></div>
+                                     width="100%"></a></div>
                     </div>
                 </div>
             </div>
@@ -70,6 +70,7 @@
                 </div>
             </nav>
         </section>
+
         <section id="newsSection">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
@@ -96,7 +97,8 @@
                                     <a ... href="{{ path('article_show',{'id': article.id }) }}"> <img
                                                 src="{{ vich_uploader_asset(article, 'imageFile') }}" alt=""></a>
                                     <div class="slider_article">
-                                        <h2><a class="slider_tittle" href="{{ path('article_show',{'id': article.id }) }}">{{ article.titre }}</a>
+                                        <h2><a class="slider_tittle"
+                                               href="{{ path('article_show',{'id': article.id }) }}">{{ article.titre }}</a>
                                         </h2>
                                         <p>
                                             {{ article.description | striptags | slice(0, 200) }} ...
@@ -112,14 +114,27 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
                     <div class="latest_post">
-                        <a class="twitter-timeline" data-width="100%" data-height="480" href="https://twitter.com/FPLUpdates_Tips">Tweets by FPLUpdates_Tips</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <a class="twitter-timeline" data-width="100%" data-height="480"
+                           href="https://twitter.com/FPLUpdates_Tips">Tweets by FPLUpdates_Tips</a>
+                        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </div>
                 </div>
             </div>
         </section>
 
-
         <div class="single_post_content">
+            <div>
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- annonce cover -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-3916336310288272"
+                     data-ad-slot="9624497135"
+                     data-ad-format="auto"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
             <h2><span>Fantasy Articles</span></h2>
             <ul class="photograph_nav  wow fadeInDown">
                 {% set index = 1 %}
@@ -132,20 +147,44 @@
                 {% endfor %}
 
             </ul>
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-format="fluid"
-                 data-ad-layout="image-top"
-                 data-ad-layout-key="-8i+1u-de+eq+dx"
-                 data-ad-client="ca-pub-3916336310288272"
-                 data-ad-slot="7908236577"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+            <div>
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- annonce cover -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-3916336310288272"
+                     data-ad-slot="9624497135"
+                     data-ad-format="auto"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
         </div>
 
+        <div class="col-md-12">
+            <br><br>
+            <div class="col-md-6">
 
+                <iframe frameborder="0" scrolling="no" width="100%" height="600"
+                        src="https://www.fctables.com/england/premier-league/iframe/?type=table&lang_id=2&country=67&template=10&team=&timezone=Africa/Lagos&time=24&po=1&ma=1&wi=1&dr=1&los=1&gf=1&ga=1&gd=1&pts=1&ng=1&form=1&width=520&height=700&font=Verdana&fs=12&lh=22&bg=FFFFFF&fc=333333&logo=1&tlink=1&scfs=22&scfc=333333&scb=1&sclg=1&teamls=80&ths=1&thb=1&thba=FFFFFF&thc=000000&bc=dddddd&hob=f5f5f5&hobc=ebe7e7&lc=333333&sh=1&hfb=1&hbc=3bafda&hfc=FFFFFF"></iframe>
+                <div style="text-align:center;"></div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-12">
+
+                    <iframe frameborder="0" scrolling="no" width="100%" height="350"
+                            src="https://www.fctables.com/england/premier-league/iframe/?type=league-scores&lang_id=2&country=67&template=10&team=180231&timezone=Africa/Lagos&time=24&width=520&height=440&font=Verdana&fs=12&lh=22&bg=FFFFFF&fc=333333&logo=1&tlink=1&scoreb=f4454f&scorefc=FFFFFF&sgdcoreb=8f8d8d&sgdcorefc=FFFFFF&sh=1&hfb=1&hbc=3bafda&hfc=FFFFFF"></iframe>
+                    <div style="text-align:center;"></div>
+                </div>
+                <div class="col-md-12">
+                    <iframe frameborder="0" scrolling="yes" width="100%" height="250"
+                            src="https://www.fctables.com/england/premier-league/iframe=/?type=top-scorers&lang_id=2&country=67&template=10&team=&timezone=Africa/Lagos&time=24&limit=10&ppo=1&pte=1&pgo=1&pma=1&pas=1&ppe=1&width=520&height=700&font=Verdana&fs=12&lh=22&bg=FFFFFF&fc=333333&logo=1&tlink=1&ths=1&thb=1&thba=FFFFFF&thc=000000&bc=dddddd&hob=f5f5f5&hobc=ebe7e7&lc=333333&sh=1&hfb=1&hbc=3bafda&hfc=FFFFFF"></iframe>
+                    <div style="text-align:center;"></div>
+                </div>
+
+            </div>
+        </div>
         <div class="single_post_content">
             <h2><span>Teams Suggested By FPL Updates & Tips</span></h2>
             <ul class="photograph_nav  wow fadeInDown">
