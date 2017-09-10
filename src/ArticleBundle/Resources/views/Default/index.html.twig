@@ -27,8 +27,8 @@
                     <div class="header_bottom">
 
                         <div><a href="#">
-                                <img src="{{ asset('bundles/article/newlogos/generals.jpg') }}" alt="" height="420"
-                                              width="1080"></a></div>
+                                <img src="{{ asset('bundles/article/newlogos/generals.jpg') }}" alt=""
+                                              width="100%"></a></div>
                     </div>
                 </div>
             </div>
@@ -96,7 +96,7 @@
                                     <a ... href="{{ path('article_show',{'id': article.id }) }}"> <img
                                                 src="{{ vich_uploader_asset(article, 'imageFile') }}" alt=""></a>
                                     <div class="slider_article">
-                                        <h2><a class="slider_tittle" href="#">{{ article.titre }}</a>
+                                        <h2><a class="slider_tittle" href="{{ path('article_show',{'id': article.id }) }}">{{ article.titre }}</a>
                                         </h2>
                                         <p>
                                             {{ article.description | striptags | slice(0, 200) }} ...
@@ -112,58 +112,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
                     <div class="latest_post">
-                        <h2><span>FPL TOP PLAYERS</span></h2>
-                        <div class="latest_post_container">
-                            <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
-                            <ul class="latest_postnav">
-                                {% set index = 1 %}
-                                {% for article in articles if article.categorie == '10' and index <= 5 %}
-                                    <li>
-                                        <div class="media"><a href="{{ path('article_show',{'id': article.id }) }}"
-                                                              class="media-left"> <img alt=""
-                                                                                       src="{{ vich_uploader_asset(article, 'imageFile') }}">
-                                            </a>
-                                            <div class="media-body"><a href="#"
-                                                                       class="catg_title"> {{ article.titre }} </a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    {% set index = index + 1 %}
-
-                                {% endfor %}
-                                {#
-                                                                <li>
-                                                                    <div class="media"><a href="#" class="media-left"> <img alt=""
-                                                                                                                            src="{{ asset('bundles/article/images/post_img2.png') }}">
-                                                                        </a>
-                                                                        <div class="media-body"><a href="#" class="catg_title"> Diego Costa</a></div>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="media"><a href="#" class="media-left"> <img alt=""
-                                                                                                                            src="{{ asset('bundles/article/images/post_img3.png') }}">
-                                                                        </a>
-                                                                        <div class="media-body"><a href="#" class="catg_title"> Alexis Sanchez</a></div>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="media"><a href="#" class="media-left"> <img alt=""
-                                                                                                                            src="{{ asset('bundles/article/images/post_img4.png') }}">
-                                                                        </a>
-                                                                        <div class="media-body"><a href="#" class="catg_title"> Sergio Aguero </a></div>
-                                                                    </div>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="media"><a href="#" class="media-left"> <img alt=""
-                                                                                                                            src="{{ asset('bundles/article/images/post_img5.png') }}">
-                                                                        </a>
-                                                                        <div class="media-body"><a href="#" class="catg_title"> Romelu Lukaku </a></div>
-                                                                    </div>
-                                                                </li>
-                                                                #}
-                            </ul>
-                            <div id="next-button"><i class="fa  fa-chevron-down"></i></div>
-                        </div>
+                        <a class="twitter-timeline" data-width="100%" data-height="480" href="https://twitter.com/FPLUpdates_Tips">Tweets by FPLUpdates_Tips</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </div>
                 </div>
             </div>
@@ -182,62 +131,18 @@
 
                 {% endfor %}
 
-                {#<li>
-                    <div class="single_iteam"><a href="#"> <img src="{{ asset('bundles/article/images/player2.jpg') }}"
-                                                                alt=""></a>
-                        <div class="slider_article">
-                            <h2><a class="slider_tittle" href="#">Looking for some good differentials for GW29 ? Here
-                                    you are !!!</a></h2>
-                            <p>MID -- #King | £5.6m | 8.3% ownership, The top FPL scorer [18pts] of the last game week
-                                can't be ignored in our differential picks this time out again. Despite netti...</p>
-                        </div>
-                </li>
-
-                <li>
-                    <div class="single_iteam"><a href="#"> <img src="{{ asset('bundles/article/images/player3.jpg') }}"
-                                                                alt=""></a>
-                        <div class="slider_article">
-                            <h2><a class="slider_tittle" href="#">Players to Watch GW29</a></h2>
-                            <p>League’s meanest defense, Spurs, have managed 4 clean sheets in their last 5 home games.
-                                He might even nick some bonus from saves as in form ...</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="single_iteam"><a href="#"> <img src="{{ asset('bundles/article/images/player4.jpg') }}"
-                                                                alt=""></a>
-                        <div class="slider_article">
-                            <h2><a class="slider_tittle" href="#">Players to Watch GW29</a></h2>
-                            <p>League’s meanest defense, Spurs, have managed 4 clean sheets in their last 5 home games.
-                                He might even nick some bonus from saves as in form ...</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="single_iteam"><a href="#"> <img src="{{ asset('bundles/article/images/player5.jpg') }}"
-                                                                alt=""></a>
-                        <div class="slider_article">
-                            <h2><a class="slider_tittle" href="#">Players to Watch GW29</a></h2>
-                            <p>League’s meanest defense, Spurs, have managed 4 clean sheets in their last 5 home games.
-                                He might even nick some bonus from saves as in form ...</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="single_iteam"><a href="#"> <img src="{{ asset('bundles/article/images/player6.jpg') }}"
-                                                                alt=""></a>
-                        <div class="slider_article">
-                            <h2><a class="slider_tittle" href="#">Players to Watch GW29</a></h2>
-                            <p>League’s meanest defense, Spurs, have managed 4 clean sheets in their last 5 home games.
-                                He might even nick some bonus from saves as in form ...</p>
-                        </div>
-                    </div>
-                </li>
-#}
             </ul>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-format="fluid"
+                 data-ad-layout="image-top"
+                 data-ad-layout-key="-8i+1u-de+eq+dx"
+                 data-ad-client="ca-pub-3916336310288272"
+                 data-ad-slot="7908236577"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
 
 

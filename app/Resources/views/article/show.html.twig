@@ -20,12 +20,20 @@
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="header_bottom">
 
-                        <div><a href="#">
-                                <img src="{{ asset('bundles/article/newlogos/generals.jpg') }}" alt="" height="420"
-                                              width="1080"></a></div>
+                        <div>
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- annonce cover -->
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-3916336310288272"
+                                 data-ad-slot="9624497135"
+                                 data-ad-format="auto"></ins>
+                            <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
                     </div>
                 </div>
-            </div>
         </header>
         <section id="navArea">
             <nav class="navbar navbar-inverse" role="navigation">
@@ -54,7 +62,7 @@
                                     </li>
                                     <li><a href="{{ path('article_homepage',{'categorie':4}) }}">Gamewwek Top Facts &
                                             Stats</a></li>
-                                    <li><a href="{{ path('article_homepage',{'categorie':10}) }}">FPL Top Players</a>
+                                    <li><a href="{{ path('article_homepage',{'categorie':10}) }}">Fixture Analysis</a>
                                     </li>
                                 </ul>                            {% endblock %}
                         </li>
@@ -94,12 +102,12 @@
         </section>
         <section id="contentSection">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="col-lg-8 col-md-8 col-sm-8">
                     <div class="left_content">
                         <div class="single_page">
                             <ol class="breadcrumb">
                                 <li><a href="{{ path('frontend_homepage') }}">Home</a></li>
-                                <li><a href="#">
+                                <li><a href="{{ path('article_homepage',{'categorie': article.categorie}) }}">
                                         {% if article.categorie == 1 %}
                                             Captain Choice
                                         {% elseif article.categorie == 2 %}
@@ -119,7 +127,7 @@
                                         {% elseif article.categorie == 9 %}
                                             Others
                                         {% elseif article.categorie == 10 %}
-                                            FPL Top Players
+                                            Fixture Analysis
                                         {% endif %}</a></li>
 
                             </ol>
@@ -127,7 +135,7 @@
                             <div class="post_commentbox"><a href="#"><i class="fa fa-user"></i>{{ article.utilisateur }}
                                 </a> <span><i
                                             class="fa fa-calendar"></i>{{ article.dateCreation|date('Y-m-d') }}</span>
-                                <a href="#"><i
+                                <a href="{{ path('article_homepage',{'categorie': article.categorie}) }}"><i
                                             class="fa fa-tags"></i>
                                     {% if article.categorie == 1 %}
                                         Captain Choice
@@ -148,14 +156,26 @@
                                     {% elseif article.categorie == 9 %}
                                         Others
                                     {% elseif article.categorie == 10 %}
-                                        FPL Top Players
+                                        Fixture Analysis
                                     {% endif %}
                                 </a></div>
                             <div class="single_page_content"><img class="img-center"
                                                                   src="{{ vich_uploader_asset(article, 'imageFile') }}"
                                                                   alt="">
                                 <blockquote>
+                                    <script async
+                                            src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                    <ins class="adsbygoogle"
+                                         style="display:block; text-align:center;"
+                                         data-ad-format="fluid"
+                                         data-ad-layout="in-article"
+                                         data-ad-client="ca-pub-3916336310288272"
+                                         data-ad-slot="4682473281"></ins>
+                                    <script>
+                                        (adsbygoogle = window.adsbygoogle || []).push({});
+                                    </script>
                                     {{ article.description | nl2br }}
+
                                 </blockquote>
 
                             </div>
@@ -182,15 +202,110 @@
                         </div>
                     </div>
                 </div>
-                <nav class="nav-slit"><a class="prev" href="#"> <span class="icon-wrap"><i class="fa fa-angle-left"></i></span>
-                        <div>
-                            <h3>City Lights</h3>
-                            <img src="../images/post_img1.jpg" alt=""/></div>
-                    </a> <a class="next" href="#"> <span class="icon-wrap"><i class="fa fa-angle-right"></i></span>
-                        <div>
-                            <h3>Street Hills</h3>
-                            <img src="../images/post_img1.jpg" alt=""/></div>
-                    </a></nav>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <aside class="right_content">
+                        <div class="single_sidebar">
+                            <h2><span>Popular Articles</span></h2>
+                            <ul class="spost_nav">
+                                {% set arraycategorie = [] %}
+                                {% for article in articles if (article.categorie <= 4 or article.categorie == 9 or article.categorie == 10 ) and article.categorie > 0 and article.categorie not in arraycategorie and arraycategorie|length <= 6    %}
+                                    {% set arraycategorie = arraycategorie|merge( [article.categorie]  ) %}
+                                    <li>
+                                        <div class="media wow fadeInDown">
+                                            <a href="{{ path('article_show',{'id': article.id }) }}" class="media-left">
+                                                <img alt="" src="{{ vich_uploader_asset(article, 'imageFile') }}"> </a>
+                                            <div class="media-body"><a
+                                                        href="{{ path('article_show',{'id': article.id }) }}"
+                                                        class="catg_title"> {{ article.titre }} </a></div>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="single_sidebar">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#category" aria-controls="home"
+                                                                          role="tab" data-toggle="tab">Category</a></li>
+                                <li role="presentation"><a href="#video" aria-controls="profile" role="tab"
+                                                           data-toggle="tab">Video</a></li>
+                                <li role="presentation"><a href="#comments" aria-controls="messages" role="tab"
+                                                           data-toggle="tab">FPL Tips</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="category">
+                                    <ul>
+                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':1}) }}">Captain Choice</a></li>
+                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':2}) }}">TOP 4 Players To Watch</a></li>
+                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':4}) }}">TOP 3 Differentials</a></li>
+                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':3}) }}">Gamewwek Top Facts & Stats</a></li>
+                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':5}) }}">Price Changes</a></li>
+                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':6}) }}">Injury Updates</a></li>
+                                        <li class="cat-item"><a href="{{ path('article_homepage',{'categorie':7}) }}">FPL Clean Sheets</a></li>
+                                    </ul>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="video">
+                                    <div class="vide_area">
+                                        <iframe width="100%" height="250"
+                                                src="https://www.youtube.com/embed/Im3UObTLTGw"
+                                                frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="comments">
+                                    <ul class="spost_nav">
+                                        <li>
+                                            <div class="media wow fadeInDown">
+                                                <div class="media-body"> <a class="catg_title"> Don't chose too many differentials! Make sure to include some safe choices! </a> </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="media wow fadeInDown">
+                                                <div class="media-body"> <a class="catg_title"> Try not to Spend more than £9m on GK!
+                                                        Remember that you will play only 1 of them! </a> </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="media wow fadeInDown">
+                                                <div class="media-body"> <a class="catg_title">  Don't buy a player for a single Gameweek! Always plan </a> </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="media wow fadeInDown">
+                                                <div class="media-body"> <a class="catg_title">  You want players who can score, assist or get cleansheets!
+                                                        Please don't waste your budget on defensive midfielders </a> </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="media wow fadeInDown">
+                                                <div class="media-body"> <a href="{{ path('article_homepage',{'categorie':1}) }}" class="catg_title"> Never captain defenders and goalkeeprs! Always Follow Our Captain Choices </a> </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_sidebar wow fadeInDown">
+                            <h2><span>Sponsor</span></h2>
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <!-- annonce sponsor -->
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-3916336310288272"
+                                 data-ad-slot="8575973492"
+                                 data-ad-format="auto"></ins>
+                            <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+                        <div class="single_sidebar wow fadeInDown">
+                            <h2><span>Links</span></h2>
+                            <ul>
+                                <li class="facebook"><a href="https://www.facebook.com/groups/FPLUpdates.Tips/?ref=bookmarks">Facebook Group</a></li>
+                                <li><a href="#">About Us</a></li>
+                                <li class="mail"><a href="#">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
             </div>
         </section>
         {% block footer %}

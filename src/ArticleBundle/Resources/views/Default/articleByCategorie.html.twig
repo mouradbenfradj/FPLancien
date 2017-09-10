@@ -27,24 +27,24 @@
                     <div class="header_bottom">
 
                         <div><a href="#">
-                                {% if 1 == app.request.get('categorie')  %}
-                                    <img src="{{ asset('bundles/article/newlogos/captainchoice.jpg') }}" alt="" height="420"
-                                         width="1080">
-                                {% elseif 2 == app.request.get('categorie')  %}
-                                    <img src="{{ asset('bundles/article/newlogos/top4players.jpg') }}" alt="" height="420"
-                                         width="1080">
-                                {% elseif 3 == app.request.get('categorie')  %}
-                                    <img src="{{ asset('bundles/article/newlogos/differentials.jpg') }}" alt="" height="420"
-                                         width="1080">
-                                {% elseif 5 == app.request.get('categorie')  %}
-                                    <img src="{{ asset('bundles/article/newlogos/pricechnges.png') }}" alt="" height="420"
-                                         width="1080">
-                                {% elseif 6 == app.request.get('categorie')  %}
-                                    <img src="{{ asset('bundles/article/newlogos/injryupdates.png') }}" alt="" height="420"
-                                         width="1080">
+                                {% if 1 == app.request.get('categorie') %}
+                                    <img src="{{ asset('bundles/article/newlogos/captainchoice.jpg') }}" alt=""
+                                         width="100%">
+                                {% elseif 2 == app.request.get('categorie') %}
+                                    <img src="{{ asset('bundles/article/newlogos/top4players.jpg') }}" alt=""
+                                         width="100%">
+                                {% elseif 3 == app.request.get('categorie') %}
+                                    <img src="{{ asset('bundles/article/newlogos/differentials.jpg') }}" alt=""
+                                         width="100%">
+                                {% elseif 5 == app.request.get('categorie') %}
+                                    <img src="{{ asset('bundles/article/newlogos/pricechnges.png') }}" alt=""
+                                         width="100%">
+                                {% elseif 6 == app.request.get('categorie') %}
+                                    <img src="{{ asset('bundles/article/newlogos/injryupdates.png') }}" alt=""
+                                         width="100%">
                                 {% else %}
-                                    <img src="{{ asset('bundles/article/newlogos/generals.jpg') }}" alt="" height="420"
-                                              width="1080">
+                                    <img src="{{ asset('bundles/article/newlogos/generals.jpg') }}" alt=""
+                                         width="100%">
                                 {% endif %}
                             </a></div>
                     </div>
@@ -91,6 +91,50 @@
         </section>
 
         <div class="single_post_content">
+            {% if app.request.get('categorie')  == 6 %}
+                <table class="table  table-bordered table-striped" style="margin: auto">
+                    <thead>
+                    <tr>
+                        <th bgcolor="aqua"><h4>Player</h4></th>
+                        <th bgcolor="aqua"><h4>Type of Injury</h4></th>
+                        <th bgcolor="aqua"><h4>Return Date</h4></th>
+                        <th bgcolor="aqua"><h4>Status</h4></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for injury in injurys %}
+                        <tr>
+                            <td>{{ injury.playerName }}</td>
+                            <td>{{ injury.typeInjury }}</td>
+                            <td>{{ injury.returnDate|date('Y-m-d') }}</td>
+                            <td>{{ injury.states }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+            {% if app.request.get('categorie')  == 7 %}
+                <table class="table  table-bordered table-striped" style="margin: auto">
+                    <thead>
+                    <tr>
+                        <th bgcolor="aqua"><h4>Team A</h4></th>
+                        <th bgcolor="aqua"><h4>CS Odds A</h4></th>
+                        <th bgcolor="aqua"><h4>CS Odds B</h4></th>
+                        <th bgcolor="aqua"><h4>Team B</h4></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for csOdd in csOdds %}
+                        <tr>
+                            <td>{{ csOdd.teamA }}</td>
+                            <td>{{ csOdd.oddA }}</td>
+                            <td>{{ csOdd.oddB }}</td>
+                            <td>{{ csOdd.teamB }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
             <h2><span>Fantasy Articles</span></h2>
             <ul class="photograph_nav  wow fadeInDown">
                 {% for article in articles if article.categorie == app.request.get('categorie') %}
@@ -100,6 +144,18 @@
 
                 {% endfor %}
             </ul>
+
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-format="fluid"
+                 data-ad-layout="image-top"
+                 data-ad-layout-key="-8i+1u-de+eq+dx"
+                 data-ad-client="ca-pub-3916336310288272"
+                 data-ad-slot="7908236577"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
         {% block footer %}
             {{ parent() }}

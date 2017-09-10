@@ -9,3 +9,6 @@ frontend_homepage:
 frontend_team:
     resource: "@FrontendBundle/Resources/config/routing/team.yml"
     prefix:   /team
+frontend_about_us:
+    path:     /about
+    defaults: { _controller: FrontendBundle:About_us:index }

@@ -21,7 +21,7 @@ class Builder implements ContainerAwareInterface
         $menu = $factory->createItem('root');
         $menu->setChildrenAttribute('class', 'top_nav');
         $menu->addChild('Home', array('route' => 'article_homepage'));
-        $menu->addChild('About', array('route' => 'article_homepage'));
+        $menu->addChild('About', array('route' => 'frontend_about_us'));
         $menu->addChild('Contact', array('route' => 'article_homepage'));
         /*
             // access services from the container!

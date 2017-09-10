@@ -22,3 +22,27 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: Team }
         public: true
+   admin.injury_updates:
+        class: FrontendBundle\Admin\InjuryUpdatesAdmin
+        arguments: [~, FrontendBundle\Entity\InjuryUpdates, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: injury updates }
+        public: true
+   admin.csodds:
+        class: FrontendBundle\Admin\CsOddsAdmin
+        arguments: [~, FrontendBundle\Entity\CsOdds, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: CS Odds}
+        public: true
+   admin.pricechange:
+        class: FrontendBundle\Admin\PriceChangesAdmin
+        arguments: [~, FrontendBundle\Entity\PriceChanges, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Price Changes }
+        public: true
+   admin.propablepricechanges:
+        class: FrontendBundle\Admin\ProbablePriceChangesAdmin
+        arguments: [~, FrontendBundle\Entity\ProbablePriceChanges, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: propable Price Changes }
+        public: true

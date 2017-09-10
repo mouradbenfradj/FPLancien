@@ -123,7 +123,7 @@ class Article
             7 => 'FPL Clean Sheets',
             8 => 'EPL Teams Current Lineups',
             9 => 'Others',
-            10 => 'FPL Top Players'
+            10 => 'Fixture Analysis'
         );
 
     /**

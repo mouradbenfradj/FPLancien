@@ -67,6 +67,7 @@ class ArticleController extends Controller
         $em = $this->getDoctrine()->getManager();
         $news = $em->getRepository('FrontendBundle:News')->findAll();
         $articles = $em->getRepository('ArticleBundle:Article')->findAll();
+        $articles = array_reverse($articles);
 
         return $this->render('article/show.html.twig', array(
             'articles' => $articles, 'article' => $article, 'news' => $news
