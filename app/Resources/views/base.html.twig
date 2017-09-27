@@ -105,9 +105,9 @@
         {% set index = 0 %}
         {% for new in news if index <= 6 %}
             <li>
-                <a href="#"> <img
+                <a href="#"> {#<img
                             src="{{ asset('bundles/article/newlogos/JXQESMU.png') }}"
-                            alt="">
+                            alt="">#}
                     {{ new.latestNews }}</a>
             </li>
             {% set index = index + 1 %}
@@ -167,7 +167,7 @@
         </div>
     {% endblock %}
     {% block footer %}
-
+{#
         <div class="col-md-12"  style="text-align:center;">
             <a href="https://goo.gl/YAJJN6">  <button class="button button33">Digital</button></a>
             <a href="https://goo.gl/VHAXmW"> <button class="button button33">Print</button>
@@ -179,6 +179,7 @@
             <br>
             <br>
         </div>
+        #}
         <footer id="footer">
             <div class="footer_top">
                 <div class="row">
