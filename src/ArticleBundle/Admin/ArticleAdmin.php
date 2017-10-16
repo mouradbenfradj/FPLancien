@@ -8,19 +8,27 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\CoreBundle\Form\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class ArticleAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-
         $formMapper->add('titre')->add('description')->add('categorie', ChoiceType::class, array(
             'choices' => Article::$choiceCategorie,
             'multiple' => false
-        ))
-            ->add('imageFile', 'file');
+        ))->add('paragraphs', CollectionType::class, array(
+            'by_reference' => false
+        ),
+            array(
+                'edit' => 'inline',
+                'inline' => 'table',
+                'sortable' => 'position'
+            ))
+            ->add('imageFile', 'file', array('required' => false));
     }
+
     public function prePersist($object)
     {
 
@@ -30,13 +38,11 @@ class ArticleAdmin extends AbstractAdmin
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('titre')->add('description')->add('categorie')
-            ;
+        $datagridMapper->add('titre')->add('description')->add('categorie');
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-            $listMapper->addIdentifier('id')->add('titre')->add('description')->add('categorie')->add('imageFile', null, array('template' => 'admin/image.html.twig'))
-         ;
+        $listMapper->addIdentifier('id')->add('titre')->add('description')->add('categorie')->add('imageFile', null, array('template' => 'admin/image.html.twig'))->add('paragraphs');
     }
 }

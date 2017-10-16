@@ -156,6 +156,27 @@ sonata_media:
                 small: { width: 100 , quality: 70}
                 big:   { width: 500 , quality: 70}
 
+        paragraph_image:  # the default context is mandatory
+            providers:
+                - sonata.media.provider.image
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
+
+        paragraph_video:  # the default context is mandatory
+            providers:
+                - sonata.media.provider.youtube
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
+
+        publiciter:
+            providers:
+                - sonata.media.provider.youtube
+
+            formats:
+                small: { width: 150 , quality: 95}
+                big:   { width: 500 , quality: 90}
     cdn:
         server:
             path: /uploads/media # http://media.sonata-project.org/

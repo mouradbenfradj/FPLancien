@@ -34,7 +34,7 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text",nullable=true)
      */
     private $description;
     /**
@@ -51,6 +51,11 @@ class Article
      */
     private $image;
 
+
+    /**
+     * @ORM\OneToMany(targetEntity="ArticleBundle\Entity\Paragraph", mappedBy="article", cascade={"all"})
+     */
+    private $paragraphs;
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
@@ -62,11 +67,12 @@ class Article
 
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime",nullable=true)
      *
      * @var \DateTime
      */
     private $updatedAt;
+
 
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
@@ -273,7 +279,7 @@ class Article
      *
      * @return Article
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt($updatedAt=null)
     {
         $this->updatedAt = $updatedAt;
 
@@ -312,5 +318,47 @@ class Article
     public function getUtilisateur()
     {
         return $this->utilisateur;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->paragraphs = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add paragraph
+     *
+     * @param \ArticleBundle\Entity\Paragraph $paragraph
+     *
+     * @return Article
+     */
+    public function addParagraph(\ArticleBundle\Entity\Paragraph $paragraph)
+    {
+        $this->paragraphs[] = $paragraph;
+        $paragraph->setArticle($this);
+        return $this;
+    }
+
+    /**
+     * Remove paragraph
+     *
+     * @param \ArticleBundle\Entity\Paragraph $paragraph
+     */
+    public function removeParagraph(\ArticleBundle\Entity\Paragraph $paragraph)
+    {
+        $this->paragraphs->removeElement($paragraph);
+    }
+
+    /**
+     * Get paragraphs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getParagraphs()
+    {
+        return $this->paragraphs;
     }
 }

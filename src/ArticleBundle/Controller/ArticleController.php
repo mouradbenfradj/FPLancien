@@ -68,7 +68,7 @@ class ArticleController extends Controller
         $news = $em->getRepository('FrontendBundle:News')->findAll();
         $articles = $em->getRepository('ArticleBundle:Article')->findAll();
         $articles = array_reverse($articles);
-        $media = $em->getRepository('ApplicationSonataMediaBundle:Media')->findAll();
+        $media = $em->getRepository('ApplicationSonataMediaBundle:Media')->findBy(array('context'=>'publiciter'));
         $media = end($media);
 
         return $this->render('article/show.html.twig', array(

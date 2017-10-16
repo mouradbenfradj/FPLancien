@@ -10,6 +10,12 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: Article }
         public: true
+   admin.paragraph:
+        class: ArticleBundle\Admin\ParagraphAdmin
+        arguments: [~, ArticleBundle\Entity\Paragraph, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Paragraph }
+        public: true
    admin.news:
         class: FrontendBundle\Admin\NewsAdmin
         arguments: [~, FrontendBundle\Entity\News, ~]
