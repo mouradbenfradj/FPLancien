@@ -127,3 +127,4 @@ workspace/uploads/
 install-log.txt
 
 # End of https://www.gitignore.io/api/symfony,phpstorm,composer,symphonycms
+/nbproject/private/
